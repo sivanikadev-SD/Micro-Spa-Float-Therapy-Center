@@ -1,0 +1,273 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serene Float — Contact</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&family=Poppins:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+    <link rel="stylesheet" href="../assets/css/rtl.css" />
+  </head>
+  <body>
+    <header class="site-header" id="siteHeader">
+      <nav class="nav-inner">
+        <a class="logo" onclick="showPage('home')">
+          <div class="logo-icon">
+            <img src="../assets/images/logo.png" alt="Serene Float Logo" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          Serene Float
+        </a>
+        <div class="nav-links">
+          <div class="nav-item dropdown">
+            <a class="dropdown-toggle">Home</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-link" href="../index.html">Home v1 (SPA)</a>
+              <a class="dropdown-link" href="home-v2.html">Home v2 (Bento)</a>
+            </div>
+          </div>
+          <a onclick="showPage('services')" data-page="services">Services</a>
+          <a onclick="showPage('about')" data-page="about">About</a>
+          <a onclick="showPage('pricing')" data-page="pricing">Pricing</a>
+          <a onclick="showPage('contact')" class="active" data-page="contact">Contact</a>
+          <a onclick="showPage('dashboard')" data-page="dashboard">Dashboard</a>
+          <div class="mobile-nav-btns">
+            <button onclick="showPage('auth-login')" class="btn btn-secondary">
+              Sign In
+            </button>
+            <button onclick="showPage('auth-signup')" class="btn btn-primary">
+              Book Now
+            </button>
+          </div>
+        </div>
+        <div class="nav-actions">
+          <button
+            class="icon-btn"
+            onclick="toggleTheme()"
+            title="Toggle theme"
+            id="themeBtn"
+          >
+            <svg
+              id="themeIcon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+            </svg>
+          </button>
+          <button
+            class="icon-btn"
+            onclick="toggleRTL()"
+            title="Toggle RTL"
+            id="rtlBtn"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M3 5h12M9 5v14M3 9l3-3-3-3M15 5h6M15 19h6M15 12h6" />
+            </svg>
+          </button>
+          <a onclick="showPage('auth-login')" class="btn btn-secondary"
+            >Sign In</a
+          >
+          <a onclick="showPage('auth-signup')" class="btn btn-primary"
+            >Book Now</a
+          >
+        </div>
+      </nav>
+    </header>
+    <div id="contact" class="page active">
+      <div class="page-hero">
+        <div class="page-hero-inner">
+          <div class="section-label" style="justify-content: center">
+            Get In Touch
+          </div>
+          <h1 class="section-title">We'd love to <em>hear</em> from you</h1>
+          <p class="section-sub" style="margin: 0 auto">
+            Questions about your first float? Want to gift a session? We're here
+            to help.
+          </p>
+        </div>
+      </div>
+      <section class="section">
+        <div class="section-inner">
+          <div class="contact-grid">
+            <div class="contact-form-wrap">
+              <h3
+                style="
+                  font-family: var(--font-display);
+                  font-size: 24px;
+                  font-weight: 400;
+                  margin-bottom: 24px;
+                "
+              >
+                Send a message
+              </h3>
+              <div class="form-row">
+                <div class="form-group">
+                  <label>First Name</label>
+                  <input type="text" class="form-control" placeholder="Aria" />
+                </div>
+                <div class="form-group">
+                  <label>Last Name</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Vasquez"
+                  />
+                </div>
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="aria@example.com"
+                />
+              </div>
+              <div class="form-group">
+                <label>Topic</label>
+                <select class="form-control">
+                  <option>First-time float inquiry</option>
+                  <option>Membership question</option>
+                  <option>Gift cards</option>
+                  <option>Corporate wellness</option>
+                  <option>Other</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Message</label>
+                <textarea
+                  class="form-control"
+                  placeholder="Tell us what you'd like to know..."
+                ></textarea>
+              </div>
+              <button class="btn btn-primary" style="width: 100%">
+                Send Message
+              </button>
+            </div>
+            <div class="contact-info">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z" />
+                    <circle cx="12" cy="10" r="3" />
+                  </svg>
+                </div>
+                <div>
+                  <h5>Location</h5>
+                  <p>142 Stillwater Lane, Suite 4<br />Portland, OR 97201</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 014.6 11.1a19.79 19.79 0 01-3.07-8.67A2 2 0 013.51 2h3a2 2 0 012 1.72 12.84 12.84 0 00.7 2.81 2 2 0 01-.45 2.11L8.09 9.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45 12.84 12.84 0 002.81.7A2 2 0 0122 16.92z"
+                    />
+                  </svg>
+                </div>
+                <div>
+                  <h5>Phone</h5>
+                  <p>+1 (503) 847-2200<br />Mon–Sun, 8am–8pm</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <svg viewBox="0 0 24 24">
+                    <path
+                      d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"
+                    />
+                    <polyline points="22,6 12,13 2,6" />
+                  </svg>
+                </div>
+                <div>
+                  <h5>Email</h5>
+                  <p>hello@serenefloat.com<br />Reply within 2 hours</p>
+                </div>
+              </div>
+              <div
+                class="map-placeholder"
+                style="background: none; border: none"
+              >
+                <img
+                  src="../assets/images/contact_map.png"
+                  alt="Map Location"
+                  style="
+                    width: 100%;
+                    height: 100%;
+                    object-fit: cover;
+                    border-radius: var(--radius);
+                  "
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="logo">
+              <div class="logo-icon">
+                <a href="../index.html">
+                  <img src="../assets/images/logo.png" alt="Serene Float Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                </a>
+              </div>
+              Serene Float
+            </div>
+            <p>
+              A micro-spa sanctuary dedicated to sensory deprivation therapy,
+              mindful healing, and holistic wellness.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h5>Services</h5>
+            <ul>
+              <li><a onclick="showPage('services')">Float Therapy</a></li>
+              <li><a onclick="showPage('services')">Infrared Sauna</a></li>
+              <li><a onclick="showPage('services')">Halotherapy</a></li>
+              <li><a onclick="showPage('services')">Aromatherapy</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Company</h5>
+            <ul>
+              <li><a onclick="showPage('about')">About Us</a></li>
+              <li><a onclick="showPage('pricing')">Pricing</a></li>
+              <li><a onclick="showPage('contact')">Contact</a></li>
+              <li><a href="#">Gift Cards</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Hours</h5>
+            <ul>
+              <li><a href="#">Mon–Fri: 7am–10pm</a></li>
+              <li><a href="#">Sat: 8am–10pm</a></li>
+              <li><a href="#">Sun: 9am–8pm</a></li>
+              <li><a href="#">Holidays: Varies</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Serene Float. All rights reserved.</p>
+          <p style="font-size: 13px; color: var(--text-light)">
+            Privacy · Terms · Accessibility
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>

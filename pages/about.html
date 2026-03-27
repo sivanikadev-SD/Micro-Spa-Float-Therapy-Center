@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serene Float — About</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&family=Poppins:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+    <link rel="stylesheet" href="../assets/css/rtl.css" />
+  </head>
+  <body>
+    <header class="site-header" id="siteHeader">
+      <nav class="nav-inner">
+        <a class="logo" onclick="showPage('home')">
+          <div class="logo-icon">
+            <img src="../assets/images/logo.png" alt="Serene Float Logo" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          Serene Float
+        </a>
+        <div class="nav-links">
+          <div class="nav-item dropdown">
+            <a class="dropdown-toggle">Home</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-link" href="../index.html">Home v1 (SPA)</a>
+              <a class="dropdown-link" href="home-v2.html">Home v2 (Bento)</a>
+            </div>
+          </div>
+          <a onclick="showPage('services')" data-page="services">Services</a>
+          <a onclick="showPage('about')"class="active" data-page="about">About</a>
+          <a onclick="showPage('pricing')" data-page="pricing">Pricing</a>
+          <a onclick="showPage('contact')" data-page="contact">Contact</a>
+          <a onclick="showPage('dashboard')" data-page="dashboard">Dashboard</a>
+          <div class="mobile-nav-btns">
+            <button onclick="showPage('auth-login')" class="btn btn-secondary">
+              Sign In
+            </button>
+            <button onclick="showPage('auth-signup')" class="btn btn-primary">
+              Book Now
+            </button>
+          </div>
+        </div>
+        <div class="nav-actions">
+          <button
+            class="icon-btn"
+            onclick="toggleTheme()"
+            title="Toggle theme"
+            id="themeBtn"
+          >
+            <svg
+              id="themeIcon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+            </svg>
+          </button>
+          <button
+            class="icon-btn"
+            onclick="toggleRTL()"
+            title="Toggle RTL"
+            id="rtlBtn"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M3 5h12M9 5v14M3 9l3-3-3-3M15 5h6M15 19h6M15 12h6" />
+            </svg>
+          </button>
+          <a onclick="showPage('auth-login')" class="btn btn-secondary"
+            >Sign In</a
+          >
+          <a onclick="showPage('auth-signup')" class="btn btn-primary"
+            >Book Now</a
+          >
+        </div>
+      </nav>
+    </header>
+    <div id="about" class="page active">
+      <div class="page-hero">
+        <div class="page-hero-inner">
+          <div class="section-label" style="justify-content: center">
+            Our Story
+          </div>
+          <h1 class="section-title">
+            Born from a <em>deep</em> belief in stillness
+          </h1>
+          <p class="section-sub" style="margin: 0 auto">
+            Serene Float was founded in 2019 by two wellness practitioners who
+            experienced firsthand the transformative power of sensory
+            deprivation therapy.
+          </p>
+        </div>
+      </div>
+      <section class="section">
+        <div class="section-inner">
+          <div class="about-story">
+            <div class="about-image" style="background: none">
+              <img
+                src="../assets/images/about_story.png"
+                alt="Reception Area"
+                style="width: 100%; height: 100%; object-fit: cover"
+              />
+            </div>
+            <div>
+              <div class="section-label">Our Mission</div>
+              <h2 class="section-title">Healing through <em>silence</em></h2>
+              <p
+                style="
+                  color: var(--text-muted);
+                  line-height: 1.8;
+                  margin-bottom: 20px;
+                "
+              >
+                We believe modern life demands an antidote. The constant
+                stimulation of our digital world depletes the nervous system,
+                and true recovery requires genuine stillness.
+              </p>
+              <p
+                style="
+                  color: var(--text-muted);
+                  line-height: 1.8;
+                  margin-bottom: 32px;
+                "
+              >
+                Serene Float was conceived as that antidote — a sanctuary where
+                science-backed sensory therapy meets mindful design. Every
+                element of our space, from the acoustics to the lighting, is
+                calibrated for your deepest relaxation.
+              </p>
+              <div
+                style="
+                  display: grid;
+                  grid-template-columns: repeat(3, 1fr);
+                  gap: 20px;
+                "
+              >
+                <div style="text-align: center">
+                  <div
+                    style="
+                      font-family: var(--font-display);
+                      font-size: 40px;
+                      color: var(--primary);
+                    "
+                  >
+                    6
+                  </div>
+                  <div style="font-size: 13px; color: var(--text-muted)">
+                    Private Float Suites
+                  </div>
+                </div>
+                <div style="text-align: center">
+                  <div
+                    style="
+                      font-family: var(--font-display);
+                      font-size: 40px;
+                      color: var(--primary);
+                    "
+                  >
+                    5k+
+                  </div>
+                  <div style="font-size: 13px; color: var(--text-muted)">
+                    Sessions Completed
+                  </div>
+                </div>
+                <div style="text-align: center">
+                  <div
+                    style="
+                      font-family: var(--font-display);
+                      font-size: 40px;
+                      color: var(--primary);
+                    "
+                  >
+                    98%
+                  </div>
+                  <div style="font-size: 13px; color: var(--text-muted)">
+                    Return Rate
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!-- TEAM -->
+          <div style="margin-top: 80px">
+            <div class="section-header center">
+              <div class="section-label">The Team</div>
+              <h2 class="section-title">Passionate <em>healers</em></h2>
+            </div>
+            <div class="team-grid">
+              <div class="team-card">
+                <div class="team-avatar" style="background: none">
+                  <img
+                    src="../assets/images/team_aria.png"
+                    alt="Aria Vasquez"
+                    style="width: 100%; height: 100%; object-fit: cover"
+                  />
+                </div>
+                <h4>Aria Vasquez</h4>
+                <p>Co-Founder & Float Therapist</p>
+              </div>
+              <div class="team-card">
+                <div class="team-avatar" style="background: none">
+                  <img
+                    src="../assets/images/team_daniel.png"
+                    alt="Daniel Osei"
+                    style="width: 100%; height: 100%; object-fit: cover"
+                  />
+                </div>
+                <h4>Daniel Osei</h4>
+                <p>Co-Founder & Wellness Director</p>
+              </div>
+              <div class="team-card">
+                <div class="team-avatar" style="background: none">
+                  <img
+                    src="../assets/images/team_lena.png"
+                    alt="Lena Park"
+                    style="width: 100%; height: 100%; object-fit: cover"
+                  />
+                </div>
+                <h4>Lena Park</h4>
+                <p>Head of Halotherapy</p>
+              </div>
+              <div class="team-card">
+                <div class="team-avatar" style="background: none">
+                  <img
+                    src="../assets/images/team_rami.png"
+                    alt="Rami Khalil"
+                    style="width: 100%; height: 100%; object-fit: cover"
+                  />
+                </div>
+                <h4>Rami Khalil</h4>
+                <p>Guided Meditation Coach</p>
+              </div>
+            </div>
+          </div>
+          <!-- VALUES -->
+          <div style="margin-top: 80px">
+            <div class="section-header center">
+              <div class="section-label">Core Values</div>
+              <h2 class="section-title">What <em>guides</em> us</h2>
+            </div>
+            <div class="values-grid">
+              <div class="value-card">
+                <h4>Intentional Stillness</h4>
+                <p>
+                  We protect your peace. Every design decision — from our
+                  lighting to our scheduling — ensures your session is never
+                  rushed or interrupted.
+                </p>
+              </div>
+              <div class="value-card">
+                <h4>Science-Backed Healing</h4>
+                <p>
+                  All our services are grounded in research. Float therapy's
+                  benefits for stress, pain, and cognition are documented across
+                  hundreds of clinical studies.
+                </p>
+              </div>
+              <div class="value-card">
+                <h4>Inclusive Wellness</h4>
+                <p>
+                  Healing is for everyone. We offer sliding-scale memberships,
+                  accessibility-designed suites, and a welcoming environment for
+                  all bodies and backgrounds.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="logo">
+              <div class="logo-icon">
+                <a href="../index.html">
+                  <img src="../assets/images/logo.png" alt="Serene Float Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                </a>
+              </div>
+              Serene Float
+            </div>
+            <p>
+              A micro-spa sanctuary dedicated to sensory deprivation therapy,
+              mindful healing, and holistic wellness.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h5>Services</h5>
+            <ul>
+              <li><a onclick="showPage('services')">Float Therapy</a></li>
+              <li><a onclick="showPage('services')">Infrared Sauna</a></li>
+              <li><a onclick="showPage('services')">Halotherapy</a></li>
+              <li><a onclick="showPage('services')">Aromatherapy</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Company</h5>
+            <ul>
+              <li><a onclick="showPage('about')">About Us</a></li>
+              <li><a onclick="showPage('pricing')">Pricing</a></li>
+              <li><a onclick="showPage('contact')">Contact</a></li>
+              <li><a href="#">Gift Cards</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Hours</h5>
+            <ul>
+              <li><a href="#">Mon–Fri: 7am–10pm</a></li>
+              <li><a href="#">Sat: 8am–10pm</a></li>
+              <li><a href="#">Sun: 9am–8pm</a></li>
+              <li><a href="#">Holidays: Varies</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Serene Float. All rights reserved.</p>
+          <p style="font-size: 13px; color: var(--text-light)">
+            Privacy · Terms · Accessibility
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>

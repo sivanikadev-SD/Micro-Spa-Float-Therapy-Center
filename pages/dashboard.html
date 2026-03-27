@@ -1,0 +1,683 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark" data-dir="ltr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Serene Float — Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&family=Poppins:wght@300;400&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="../assets/css/style.css">
+<link rel="stylesheet" href="../assets/css/dark-mode.css">
+<link rel="stylesheet" href="../assets/css/rtl.css">
+</head>
+<body>
+<div id="dashboard" class="page active">
+  <!-- SIDEBAR -->
+  <aside class="dash-sidebar">
+    <div class="dash-logo">
+        <a class="logo" href="../index.html">
+          <div class="logo-icon">
+            <img src="../assets/images/logo.png" alt="Serene Float Logo" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          Serene Float
+        </a>
+    </div>
+    <nav class="dash-nav">
+      <div class="dash-nav-section">
+        <h6>Main</h6>
+        <button class="dash-nav-link active" onclick="showPanel('overview')">
+          <svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+          Overview
+        </button>
+        <button class="dash-nav-link" onclick="showPanel('booking')">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+          Book a Session
+        </button>
+        <button class="dash-nav-link" onclick="showPanel('history')">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Wellness History
+        </button>
+      </div>
+      <div class="dash-nav-section">
+        <h6>Membership</h6>
+        <button class="dash-nav-link" onclick="showPanel('membership')">
+          <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+          My Membership
+        </button>
+        <button class="dash-nav-link" onclick="showPanel('waiver')">
+          <svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          Digital Waivers
+        </button>
+      </div>
+      <div class="dash-nav-section">
+        <h6>Account</h6>
+        <button class="dash-nav-link" onclick="showPanel('profile')">
+          <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          Profile & Preferences
+        </button>
+        <button class="dash-nav-link" onclick="showPanel('notifications')">
+          <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          Notifications
+        </button>
+      </div>
+    </nav>
+    <div class="dash-sidebar-footer">
+      <div class="dash-user">
+        <div class="dash-user-avatar">A</div>
+        <div>
+          <div class="dash-user-name">Aria Vasquez</div>
+          <div class="dash-user-role">Seeker Member</div>
+        </div>
+      </div>
+      <button class="logout-btn" onclick="handleLogout()">
+        <svg viewBox="0 0 24 24"><path d="M9 21H5a2 2 0 01-2-2V5a2 2 0 012-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+        Log Out
+      </button>
+    </div>
+  </aside>
+
+  <!-- MAIN CONTENT -->
+  <main class="dash-main">
+    <div class="dash-topbar">
+      <div class="dash-topbar-title" id="dashTitle">Client Dashboard</div>
+      <div class="dash-topbar-right">
+        <button class="icon-btn" onclick="toggleTheme()">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        </button>
+        <button class="notif-btn" onclick="showPanel('notifications')">
+          <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
+          <span class="notif-badge"></span>
+        </button>
+        <div class="dash-profile-btn" onclick="showPanel('profile')">
+          <div class="dash-user-avatar" style="width:36px;height:36px">A</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="dash-content">
+
+      <!-- OVERVIEW PANEL -->
+      <div class="dash-panel active" id="panel-overview">
+        <div class="welcome-banner">
+          <div>
+            <h2>Welcome back, Aria 🌊</h2>
+            <p>You have 2 sessions remaining this month. Your wellness score is trending up.</p>
+          </div>
+          <button class="btn btn-white" onclick="showPanel('booking')">Book Next Float</button>
+        </div>
+        <div class="metrics-grid">
+          <div class="metric-card">
+            <div class="metric-label">Sessions This Month</div>
+            <div class="metric-val">2</div>
+            <div class="metric-change up">↑ 1 vs last month</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Total Float Hours</div>
+            <div class="metric-val">14.5</div>
+            <div class="metric-change up">↑ 2h vs last month</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Wellness Score</div>
+            <div class="metric-val">82</div>
+            <div class="metric-change up">↑ 6 pts this week</div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-label">Sessions Remaining</div>
+            <div class="metric-val">2</div>
+            <div class="metric-change" style="color:var(--text-light)">Resets Mar 1</div>
+          </div>
+        </div>
+        <div class="dash-two-col">
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h4>Upcoming Sessions</h4>
+              <a onclick="showPanel('booking')">+ New booking</a>
+            </div>
+            <div class="dash-card-body">
+              <div class="booking-list">
+                <div class="booking-item">
+                  <div class="booking-time"><div class="bt">14</div><div class="bd">Mar</div></div>
+                  <div class="booking-info"><h5>Float Therapy — 60 min</h5><p>Suite 3 · 10:30 AM · Pod Camomile</p></div>
+                  <div class="booking-status status-confirmed">Confirmed</div>
+                </div>
+                <div class="booking-item">
+                  <div class="booking-time"><div class="bt">19</div><div class="bd">Mar</div></div>
+                  <div class="booking-info"><h5>Infrared Sauna — 30 min</h5><p>Sauna Room 1 · 2:00 PM</p></div>
+                  <div class="booking-status status-confirmed">Confirmed</div>
+                </div>
+                <div class="booking-item">
+                  <div class="booking-time"><div class="bt">28</div><div class="bd">Mar</div></div>
+                  <div class="booking-info"><h5>Float Therapy — 90 min</h5><p>Suite 1 · 11:00 AM · Pod Lavender</p></div>
+                  <div class="booking-status status-pending">Pending</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h4>Wellness Score</h4>
+            </div>
+            <div class="dash-card-body">
+              <div class="wellness-score">
+                <div class="score-ring">
+                  <svg viewBox="0 0 120 120">
+                    <circle class="bg" cx="60" cy="60" r="48"/>
+                    <circle class="val" cx="60" cy="60" r="48"/>
+                  </svg>
+                  <div class="score-center">
+                    <div class="sv">82</div>
+                    <div class="sl">/ 100</div>
+                  </div>
+                </div>
+                <div class="score-desc">Great — Keep your momentum!</div>
+              </div>
+              <div class="wellness-bars">
+                <div class="w-bar-item">
+                  <div class="w-bar-label"><span>Sleep Quality</span><span>88%</span></div>
+                  <div class="w-bar-track"><div class="w-bar-fill" style="width:88%"></div></div>
+                </div>
+                <div class="w-bar-item">
+                  <div class="w-bar-label"><span>Stress Reduction</span><span>74%</span></div>
+                  <div class="w-bar-track"><div class="w-bar-fill" style="width:74%"></div></div>
+                </div>
+                <div class="w-bar-item">
+                  <div class="w-bar-label"><span>Pain Relief</span><span>65%</span></div>
+                  <div class="w-bar-track"><div class="w-bar-fill" style="width:65%"></div></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="dash-card" style="margin-top:20px">
+          <div class="dash-card-header">
+            <h4>Recent Visit History</h4>
+            <a onclick="showPanel('history')">View all</a>
+          </div>
+          <div class="dash-card-body">
+            <div class="visit-history">
+              <div class="visit-item">
+                <div class="visit-dot"></div>
+                <div class="visit-info"><h5>Float Therapy — 60 min</h5><p>Feb 28, 2025 · Suite 2</p></div>
+                <div class="visit-badge">Completed</div>
+              </div>
+              <div class="visit-item">
+                <div class="visit-dot" style="background:var(--secondary)"></div>
+                <div class="visit-info"><h5>Infrared Sauna — 30 min</h5><p>Feb 22, 2025 · Sauna 1</p></div>
+                <div class="visit-badge">Completed</div>
+              </div>
+              <div class="visit-item">
+                <div class="visit-dot"></div>
+                <div class="visit-info"><h5>Float Therapy — 90 min</h5><p>Feb 14, 2025 · Suite 4</p></div>
+                <div class="visit-badge">Completed</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOOKING PANEL -->
+      <div class="dash-panel" id="panel-booking">
+        <h3 style="font-family:var(--font-display);font-size:28px;font-weight:300;margin-bottom:8px">Book a Session</h3>
+        <p style="color:var(--text-muted);margin-bottom:28px">Select your service, choose a date, and pick your preferred time slot.</p>
+        <div class="form-group" style="max-width:320px;margin-bottom:24px">
+          <label>Service Type</label>
+          <select class="form-control">
+            <option>Float Therapy — 60 min ($89)</option>
+            <option>Float Therapy — 90 min ($119)</option>
+            <option>Infrared Sauna — 30 min ($45)</option>
+            <option>Halotherapy — 45 min ($55)</option>
+            <option>Guided Meditation — 30 min ($35)</option>
+          </select>
+        </div>
+        <div class="booking-calendar-grid">
+          <div class="calendar-widget">
+            <div class="cal-header">
+              <h4>March 2025</h4>
+              <div class="cal-nav">
+                <button>‹</button>
+                <button>›</button>
+              </div>
+            </div>
+            <div class="cal-days-header">
+              <span>Su</span><span>Mo</span><span>Tu</span><span>We</span><span>Th</span><span>Fr</span><span>Sa</span>
+            </div>
+            <div class="cal-days" id="calDays"></div>
+          </div>
+          <div class="time-slots">
+            <h4>Available Times</h4>
+            <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px">Thursday, March 13</p>
+            <div class="time-grid">
+              <div class="time-slot unavailable">7:00 AM</div>
+              <div class="time-slot">8:00 AM</div>
+              <div class="time-slot">9:30 AM</div>
+              <div class="time-slot selected">10:30 AM</div>
+              <div class="time-slot">12:00 PM</div>
+              <div class="time-slot unavailable">1:30 PM</div>
+              <div class="time-slot">3:00 PM</div>
+              <div class="time-slot">4:30 PM</div>
+              <div class="time-slot">6:00 PM</div>
+              <div class="time-slot unavailable">7:30 PM</div>
+              <div class="time-slot">8:00 PM</div>
+              <div class="time-slot">9:00 PM</div>
+            </div>
+            <button class="btn btn-primary" style="width:100%">Confirm Booking</button>
+          </div>
+        </div>
+        <div class="booking-form-section">
+          <h4>Additional Preferences</h4>
+          <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:640px">
+            <div class="form-group">
+              <label>Pod Preference</label>
+              <select class="form-control">
+                <option>No preference</option>
+                <option>Pod Lavender (Suite 1)</option>
+                <option>Pod Camomile (Suite 3)</option>
+                <option>Pod Eucalyptus (Suite 5)</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Add-on</label>
+              <select class="form-control">
+                <option>None</option>
+                <option>Aromatherapy (+$25)</option>
+                <option>Guided Intro (+$15)</option>
+                <option>Sound Journey (+$20)</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group" style="max-width:640px">
+            <label>Special Notes</label>
+            <textarea class="form-control" placeholder="Any health conditions, preferences, or first-time notes..."></textarea>
+          </div>
+        </div>
+      </div>
+
+      <!-- WELLNESS HISTORY PANEL -->
+      <div class="dash-panel" id="panel-history">
+        <h3 style="font-family:var(--font-display);font-size:28px;font-weight:300;margin-bottom:8px">Wellness Visit History</h3>
+        <p style="color:var(--text-muted);margin-bottom:28px">A full record of your float sessions and wellness services.</p>
+        <div class="dash-card">
+          <div class="dash-card-header">
+            <h4>All Sessions</h4>
+            <span style="font-size:13px;color:var(--text-muted)">12 sessions total</span>
+          </div>
+          <div class="dash-card-body">
+            <div class="history-timeline">
+              <div class="history-item">
+                <div class="history-date"><div class="hd-day">28</div><div class="hd-month">Feb</div></div>
+                <div class="history-content">
+                  <h4>Float Therapy — 60 min</h4>
+                  <p>Suite 2 · Pod Camomile · 10:30 AM</p>
+                  <div class="history-tags"><span class="h-tag">Stress Relief</span><span class="h-tag">Back Pain</span><span class="h-tag">Deep Relaxation</span></div>
+                </div>
+                <div class="history-rating"><div class="h-stars">★★★★★</div><div class="h-dur">60 min</div></div>
+              </div>
+              <div class="history-item">
+                <div class="history-date"><div class="hd-day">22</div><div class="hd-month">Feb</div></div>
+                <div class="history-content">
+                  <h4>Infrared Sauna — 30 min</h4>
+                  <p>Sauna Room 1 · 2:00 PM</p>
+                  <div class="history-tags"><span class="h-tag">Detox</span><span class="h-tag">Muscle Recovery</span></div>
+                </div>
+                <div class="history-rating"><div class="h-stars">★★★★☆</div><div class="h-dur">30 min</div></div>
+              </div>
+              <div class="history-item">
+                <div class="history-date"><div class="hd-day">14</div><div class="hd-month">Feb</div></div>
+                <div class="history-content">
+                  <h4>Float Therapy — 90 min</h4>
+                  <p>Suite 4 · Pod Lavender · 11:00 AM</p>
+                  <div class="history-tags"><span class="h-tag">Sleep</span><span class="h-tag">Anxiety</span><span class="h-tag">Deep Float</span></div>
+                </div>
+                <div class="history-rating"><div class="h-stars">★★★★★</div><div class="h-dur">90 min</div></div>
+              </div>
+              <div class="history-item">
+                <div class="history-date"><div class="hd-day">08</div><div class="hd-month">Feb</div></div>
+                <div class="history-content">
+                  <h4>Halotherapy — 45 min</h4>
+                  <p>Salt Room · 3:00 PM</p>
+                  <div class="history-tags"><span class="h-tag">Respiratory</span><span class="h-tag">Skin</span></div>
+                </div>
+                <div class="history-rating"><div class="h-stars">★★★★☆</div><div class="h-dur">45 min</div></div>
+              </div>
+              <div class="history-item">
+                <div class="history-date"><div class="hd-day">01</div><div class="hd-month">Feb</div></div>
+                <div class="history-content">
+                  <h4>Float Therapy — 60 min</h4>
+                  <p>Suite 1 · Pod Eucalyptus · 9:00 AM</p>
+                  <div class="history-tags"><span class="h-tag">Clarity</span><span class="h-tag">Focus</span></div>
+                </div>
+                <div class="history-rating"><div class="h-stars">★★★★★</div><div class="h-dur">60 min</div></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- MEMBERSHIP PANEL -->
+      <div class="dash-panel" id="panel-membership">
+        <h3 style="font-family:var(--font-display);font-size:28px;font-weight:300;margin-bottom:8px">My Membership</h3>
+        <p style="color:var(--text-muted);margin-bottom:28px">Manage your membership plan and explore upgrade options.</p>
+        <div class="dash-card" style="margin-bottom:24px">
+          <div class="dash-card-header"><h4>Current Plan</h4></div>
+          <div class="dash-card-body">
+            <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px">
+              <div>
+                <div style="font-family:var(--font-display);font-size:28px;font-weight:400;color:var(--primary)">Seeker Membership</div>
+                <div style="font-size:14px;color:var(--text-muted);margin-top:4px">$199/month · Renews March 1, 2025</div>
+              </div>
+              <div style="display:flex;gap:10px">
+                <button class="btn btn-secondary">Manage Plan</button>
+                <button class="btn btn-primary" onclick="showPanel('membership')">Upgrade</button>
+              </div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-top:24px">
+              <div style="text-align:center;padding:16px;background:var(--bg-alt);border-radius:var(--radius-sm)">
+                <div style="font-family:var(--font-display);font-size:28px;color:var(--primary)">2/4</div>
+                <div style="font-size:12px;color:var(--text-muted)">Floats Used</div>
+              </div>
+              <div style="text-align:center;padding:16px;background:var(--bg-alt);border-radius:var(--radius-sm)">
+                <div style="font-family:var(--font-display);font-size:28px;color:var(--primary)">1/2</div>
+                <div style="font-size:12px;color:var(--text-muted)">Saunas Used</div>
+              </div>
+              <div style="text-align:center;padding:16px;background:var(--bg-alt);border-radius:var(--radius-sm)">
+                <div style="font-family:var(--font-display);font-size:28px;color:var(--primary)">1</div>
+                <div style="font-size:12px;color:var(--text-muted)">Guest Pass</div>
+              </div>
+              <div style="text-align:center;padding:16px;background:var(--bg-alt);border-radius:var(--radius-sm)">
+                <div style="font-family:var(--font-display);font-size:28px;color:var(--primary)">10%</div>
+                <div style="font-size:12px;color:var(--text-muted)">Add-on Discount</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="membership-cards">
+          <div class="membership-card">
+            <h3>Drop-In</h3>
+            <div class="m-price">$89</div>
+            <div class="m-period">per session</div>
+            <ul>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Single float session</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Private suite access</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Amenities included</li>
+            </ul>
+            <button class="btn btn-secondary" style="width:100%">Book Single</button>
+          </div>
+          <div class="membership-card active-plan">
+            <div class="active-plan-badge">Current Plan</div>
+            <h3>Seeker</h3>
+            <div class="m-price">$199</div>
+            <div class="m-period">per month</div>
+            <ul>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>4 floats/month</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>2 infrared saunas</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Priority booking</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>1 guest pass</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>10% add-on discount</li>
+            </ul>
+            <button class="btn btn-primary" style="width:100%" disabled>Active</button>
+          </div>
+          <div class="membership-card">
+            <h3>Sanctuary</h3>
+            <div class="m-price">$349</div>
+            <div class="m-period">per month</div>
+            <ul>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Unlimited floats</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Unlimited sauna</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Monthly halotherapy</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Wellness coach</li>
+              <li><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>20% add-on discount</li>
+            </ul>
+            <button class="btn btn-secondary" style="width:100%">Upgrade</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- WAIVER PANEL -->
+      <div class="dash-panel" id="panel-waiver">
+        <div class="waiver-wrap">
+          <h3 style="font-family:var(--font-display);font-size:28px;font-weight:300;margin-bottom:8px">Digital Waivers</h3>
+          <p style="color:var(--text-muted);margin-bottom:28px">Please read and sign your health & safety waiver. Required before your first session.</p>
+          <div class="waiver-card">
+            <h3>Float Therapy Health & Safety Waiver</h3>
+            <div class="waiver-sub">Serene Float Micro-Spa · Version 3.1 · Effective Jan 2025</div>
+            <div class="waiver-section">
+              <h5>Health Conditions Disclosure</h5>
+              <div class="waiver-scroll">
+                <p style="font-size:13px;color:var(--text-muted);line-height:1.8">Float therapy is generally safe for most individuals. However, you should consult your physician before floating if you have epilepsy, serious mental illness, low blood pressure, kidney disease, open wounds, skin infections, or recent surgery. Pregnant women should consult their OB/GYN prior to floating. Individuals under the influence of alcohol or drugs may not participate.</p>
+                <br>
+                <p style="font-size:13px;color:var(--text-muted);line-height:1.8">The float tank contains approximately 1,000 lbs of pharmaceutical-grade magnesium sulfate (Epsom salt) dissolved in 10 inches of water heated to approximately 93.5°F (34.2°C). The high salt concentration ensures buoyancy — you will float automatically without effort. The water is filtered, treated with UV light, and tested continuously to maintain hygiene standards.</p>
+                <br>
+                <p style="font-size:13px;color:var(--text-muted);line-height:1.8">By signing this waiver, you acknowledge that Serene Float LLC is not responsible for any adverse reactions that may occur during or after your float session. You agree to inform our staff of any relevant medical conditions prior to your session.</p>
+              </div>
+            </div>
+            <div class="waiver-checks">
+              <label class="waiver-check"><input type="checkbox"/> I confirm I do not have any contraindicated health conditions listed above, or I have consulted my physician and received clearance.</label>
+              <label class="waiver-check"><input type="checkbox"/> I understand float therapy involves sensory deprivation and I am voluntarily participating.</label>
+              <label class="waiver-check"><input type="checkbox"/> I agree to follow all pre-session hygiene guidelines provided by staff.</label>
+              <label class="waiver-check"><input type="checkbox"/> I have read and agree to the full Terms of Service and Cancellation Policy.</label>
+            </div>
+            <label style="font-size:13px;font-weight:500;display:block;margin-bottom:10px">Digital Signature</label>
+            <div class="signature-pad">
+              <canvas id="sigCanvas"></canvas>
+            </div>
+            <p class="signature-hint">Sign above using your mouse or touchscreen</p>
+            <div style="display:flex;gap:12px">
+              <button class="btn btn-primary">Submit & Sign Waiver</button>
+              <button class="btn btn-secondary">Clear Signature</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- PROFILE PANEL -->
+      <div class="dash-panel" id="panel-profile">
+        <h3 style="font-family:var(--font-display);font-size:28px;font-weight:300;margin-bottom:28px">Profile & Preferences</h3>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+          <div class="dash-card">
+            <div class="dash-card-header"><h4>Personal Information</h4></div>
+            <div class="dash-card-body">
+              <div class="form-row" style="margin-bottom:16px">
+                <div class="form-group"><label>First Name</label><input type="text" class="form-control" value="Aria"/></div>
+                <div class="form-group"><label>Last Name</label><input type="text" class="form-control" value="Vasquez"/></div>
+              </div>
+              <div class="form-group"><label>Email</label><input type="email" class="form-control" value="aria@example.com"/></div>
+              <div class="form-group"><label>Phone</label><input type="tel" class="form-control" value="+1 (503) 847-2200"/></div>
+              <div class="form-group"><label>Date of Birth</label><input type="date" class="form-control" value="1990-06-14"/></div>
+              <button class="btn btn-primary">Save Changes</button>
+            </div>
+          </div>
+          <div class="dash-card">
+            <div class="dash-card-header"><h4>Wellness Preferences</h4></div>
+            <div class="dash-card-body">
+              <div class="form-group">
+                <label>Preferred Pod Temperature</label>
+                <select class="form-control"><option>Standard (93.5°F)</option><option>Slightly Warmer (94.5°F)</option></select>
+              </div>
+              <div class="form-group">
+                <label>Music Preference</label>
+                <select class="form-control"><option>Silent float</option><option>Binaural beats</option><option>Nature sounds</option><option>Tibetan bowls</option></select>
+              </div>
+              <div class="form-group">
+                <label>Light Preference</label>
+                <select class="form-control"><option>Fully dark</option><option>Dim starlight</option><option>Soft blue</option></select>
+              </div>
+              <div class="form-group">
+                <label>Wellness Goals</label>
+                <select class="form-control"><option>Stress Relief</option><option>Pain Management</option><option>Athletic Recovery</option><option>Meditation Deepening</option></select>
+              </div>
+              <button class="btn btn-primary">Save Preferences</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- NOTIFICATIONS PANEL -->
+      <div class="dash-panel" id="panel-notifications">
+        <h3 style="font-family:var(--font-display);font-size:28px;font-weight:300;margin-bottom:28px">Notifications</h3>
+        <div class="dash-card">
+          <div class="dash-card-header"><h4>Recent Notifications</h4></div>
+          <div class="dash-card-body">
+            <div style="display:flex;flex-direction:column;gap:0">
+              <div style="display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border);align-items:flex-start">
+                <div style="width:40px;height:40px;border-radius:50%;background:color-mix(in srgb,var(--primary) 15%,transparent);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" stroke-width="1.5"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg>
+                </div>
+                <div style="flex:1">
+                  <div style="font-weight:500;font-size:14px;margin-bottom:3px">Session confirmed — March 14</div>
+                  <div style="font-size:13px;color:var(--text-muted)">Your Float Therapy session (60 min) at 10:30 AM in Suite 3 is confirmed.</div>
+                  <div style="font-size:11px;color:var(--text-light);margin-top:4px">2 hours ago</div>
+                </div>
+                <div style="width:8px;height:8px;border-radius:50%;background:var(--primary);flex-shrink:0;margin-top:6px"></div>
+              </div>
+              <div style="display:flex;gap:16px;padding:16px 0;border-bottom:1px solid var(--border);align-items:flex-start">
+                <div style="width:40px;height:40px;border-radius:50%;background:color-mix(in srgb,var(--secondary) 15%,transparent);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--secondary)" stroke-width="1.5"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+                </div>
+                <div style="flex:1">
+                  <div style="font-weight:500;font-size:14px;margin-bottom:3px">Membership renewed</div>
+                  <div style="font-size:13px;color:var(--text-muted)">Your Seeker Membership has been renewed for March 2025. 4 floats available.</div>
+                  <div style="font-size:11px;color:var(--text-light);margin-top:4px">1 day ago</div>
+                </div>
+              </div>
+              <div style="display:flex;gap:16px;padding:16px 0;align-items:flex-start">
+                <div style="width:40px;height:40px;border-radius:50%;background:color-mix(in srgb,var(--success) 15%,transparent);display:flex;align-items:center;justify-content:center;flex-shrink:0">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--success)" stroke-width="1.5"><polyline points="20 6 9 17 4 12"/></svg>
+                </div>
+                <div style="flex:1">
+                  <div style="font-weight:500;font-size:14px;margin-bottom:3px">Wellness score improved!</div>
+                  <div style="font-size:13px;color:var(--text-muted)">Your wellness score increased by 6 points after your last float. Keep it up!</div>
+                  <div style="font-size:11px;color:var(--text-light);margin-top:4px">3 days ago</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /.dash-content -->
+  </main>
+</div>
+
+<script>
+// =================== PAGE NAVIGATION ===================
+function showPage(id) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+  // Update nav active state
+  document.querySelectorAll('.nav-links a').forEach(a => {
+    a.classList.toggle('active', a.dataset.page === id);
+  });
+  // Show/hide header
+  const noHeader = ['auth-login','auth-signup','dashboard'];
+  document.getElementById('siteHeader').style.display = noHeader.includes(id) ? 'none' : 'flex';
+}
+
+// =================== DASHBOARD PANELS ===================
+function showPanel(id) {
+  document.querySelectorAll('.dash-panel').forEach(p => p.classList.remove('active'));
+  document.querySelectorAll('.dash-nav-link').forEach(l => l.classList.remove('active'));
+  document.getElementById('panel-' + id).classList.add('active');
+  const titles = {
+    overview: 'Client Dashboard', booking: 'Book a Session',
+    history: 'Wellness History', membership: 'My Membership',
+    waiver: 'Digital Waivers', profile: 'Profile & Preferences',
+    notifications: 'Notifications'
+  };
+  document.getElementById('dashTitle').textContent = titles[id] || 'Dashboard';
+  event.currentTarget && event.currentTarget.classList.add('active');
+  // Try activating button that called this
+  document.querySelectorAll('.dash-nav-link').forEach(btn => {
+    if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes("'" + id + "'")) {
+      btn.classList.add('active');
+    }
+  });
+}
+
+// =================== THEME TOGGLE ===================
+function toggleTheme() {
+  const html = document.documentElement;
+  const isDark = html.getAttribute('data-theme') === 'dark';
+  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+  document.getElementById('themeIcon').innerHTML = isDark
+    ? '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>'
+    : '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+}
+
+// =================== RTL TOGGLE ===================
+function toggleRTL() {
+  const html = document.documentElement;
+  const isRTL = html.getAttribute('data-dir') === 'rtl';
+  html.setAttribute('data-dir', isRTL ? 'ltr' : 'rtl');
+  html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+}
+
+// =================== PASSWORD TOGGLE ===================
+function togglePass(id) {
+  const input = document.getElementById(id);
+  input.type = input.type === 'password' ? 'text' : 'password';
+}
+
+// =================== SCROLL HEADER ===================
+window.addEventListener('scroll', () => {
+  document.getElementById('siteHeader').classList.toggle('scrolled', window.scrollY > 20);
+});
+
+// =================== CALENDAR ===================
+function renderCalendar() {
+  const days = document.getElementById('calDays');
+  if (!days) return;
+  const today = new Date();
+  const year = today.getFullYear(), month = today.getMonth();
+  const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+  const bookings = [5, 14, 19, 28];
+  days.innerHTML = '';
+  for (let i = 0; i < firstDay; i++) {
+    const d = document.createElement('div');
+    d.className = 'cal-day other-month';
+    d.textContent = new Date(year, month, -firstDay + i + 1).getDate();
+    days.appendChild(d);
+  }
+  for (let d = 1; d <= daysInMonth; d++) {
+    const el = document.createElement('div');
+    el.className = 'cal-day' + (d === today.getDate() ? ' today' : '') + (bookings.includes(d) ? ' has-booking' : '');
+    el.textContent = d;
+    el.onclick = () => { document.querySelectorAll('.cal-day').forEach(x => x.classList.remove('selected')); el.classList.add('selected'); };
+    days.appendChild(el);
+  }
+}
+renderCalendar();
+
+// =================== TIME SLOTS ===================
+document.addEventListener('click', e => {
+  if (e.target.classList.contains('time-slot') && !e.target.classList.contains('unavailable')) {
+    document.querySelectorAll('.time-slot').forEach(s => s.classList.remove('selected'));
+    e.target.classList.add('selected');
+  }
+});
+
+// =================== SIGNATURE PAD ===================
+(function() {
+  const canvas = document.getElementById('sigCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+  let drawing = false;
+  function resize() {
+    const pad = canvas.parentElement;
+    canvas.width = pad.offsetWidth;
+    canvas.height = pad.offsetHeight;
+  }
+  resize();
+  canvas.addEventListener('mousedown', e => { drawing = true; ctx.beginPath(); ctx.moveTo(e.offsetX, e.offsetY); });
+  canvas.addEventListener('mousemove', e => { if (!drawing) return; ctx.lineTo(e.offsetX, e.offsetY); ctx.strokeStyle = getComputedStyle(document.documentElement).getPropertyValue('--primary'); ctx.lineWidth = 2; ctx.lineCap = 'round'; ctx.stroke(); });
+  canvas.addEventListener('mouseup', () => drawing = false);
+  document.querySelector('.btn-secondary[onclick]') && null; // handled inline
+})();
+</script>
+</body>
+</html>
+
+<script src="../assets/js/main.js"></script>
+<script src="../assets/js/dashboard.js"></script>
+</body>
+</html>

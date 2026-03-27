@@ -1,0 +1,463 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serene Float — Index</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&family=Poppins:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <link rel="stylesheet" href="assets/css/dark-mode.css" />
+    <link rel="stylesheet" href="assets/css/rtl.css" />
+  </head>
+  <body>
+    <header class="site-header" id="siteHeader">
+      <nav class="nav-inner">
+        <a class="logo" onclick="showPage('home')">
+          <div class="logo-icon">
+            <img src="assets/images/logo.png" alt="Serene Float Logo" style="width: 100%; height: 100%; object-fit: contain;">
+          </div>
+          Serene Float
+        </a>
+        <div class="nav-links">
+          <div class="nav-item dropdown">
+            <a class="dropdown-toggle" onclick="showPage('home')">Home</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-link" href="index.html">Home v1 (SPA)</a>
+              <a class="dropdown-link" href="pages/home-v2.html">Home v2 (Bento)</a>
+            </div>
+          </div>
+          <a href="pages/services.html" data-page="services">Services</a>
+          <a href="pages/about.html" data-page="about">About</a>
+          <a href="pages/pricing.html" data-page="pricing">Pricing</a>
+          <a href="pages/contact.html" data-page="contact">Contact</a>
+          <a href="pages/dashboard.html" data-page="dashboard">Dashboard</a>
+          <div class="mobile-nav-btns">
+            <button href="pages/login.html" class="btn btn-secondary">
+              Sign In
+            </button>
+            <button href="pages/signup.html" class="btn btn-primary">
+              Book Now
+            </button>
+          </div>
+        </div>
+        <div class="nav-actions">
+          <button
+            class="icon-btn"
+            onclick="toggleTheme()"
+            title="Toggle theme"
+            id="themeBtn"
+          >
+            <svg
+              id="themeIcon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+            </svg>
+          </button>
+          <button
+            class="icon-btn"
+            onclick="toggleRTL()"
+            title="Toggle RTL"
+            id="rtlBtn"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M3 5h12M9 5v14M3 9l3-3-3-3M15 5h6M15 19h6M15 12h6" />
+            </svg>
+          </button>
+          <a href="pages/login.html" class="btn btn-secondary"
+            >Sign In</a
+          >
+          <a href="pages/signup.html" class="btn btn-primary"
+            >Book Now</a
+          >
+        </div>
+      </nav>
+    </header>
+    <div id="home" class="page active">
+      <!-- HERO -->
+      <section class="hero">
+        <div class="hero-inner">
+          <div class="hero-content">
+            <div class="hero-label fade-up fade-up-1">
+              Sensory Deprivation Therapy
+            </div>
+            <h1 class="fade-up fade-up-2">
+              Float into <em>deep</em><br />stillness & calm
+            </h1>
+            <p class="hero-desc fade-up fade-up-3">
+              Experience the science-backed healing of float therapy. Disconnect
+              from the world, restore your mind, and emerge transformed.
+            </p>
+            <div class="hero-actions fade-up fade-up-4">
+              <button class="btn btn-primary" href="pages/signup.html">
+                <svg
+                  width="16"
+                  height="16"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <rect x="3" y="4" width="18" height="18" rx="2" />
+                  <path d="M16 2v4M8 2v4M3 10h18" />
+                </svg>
+                Book a Session
+              </button>
+              <button class="btn btn-secondary" href="pages/services.html">
+                Explore Services
+              </button>
+            </div>
+          </div>
+          <div class="hero-visual fade-up fade-up-3">
+            <div class="float-pod">
+              <div class="float-pod-img" style="background: none">
+                <img
+                  src="assets/images/home_hero.png"
+                  alt="Luxurious Float Pod"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                />
+              </div>
+            </div>
+            <div class="hero-stats">
+              <div class="stat-item">
+                <div class="stat-val">800+</div>
+                <div class="stat-label">Floaters</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-val">4.9★</div>
+                <div class="stat-label">Rating</div>
+              </div>
+              <div class="stat-item">
+                <div class="stat-val">6</div>
+                <div class="stat-label">Pod Rooms</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SERVICES PREVIEW -->
+      <section class="section services-bg">
+        <div class="section-inner">
+          <div class="section-header center">
+            <div class="section-label">What We Offer</div>
+            <h2 class="section-title">Transformative <em>therapies</em></h2>
+            <p class="section-sub">
+              Each session is crafted to guide you into profound relaxation and
+              holistic healing.
+            </p>
+          </div>
+          <div class="services-grid">
+            <div class="service-card">
+              <div class="service-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 2a10 10 0 100 20A10 10 0 0012 2z" />
+                  <path d="M12 6v6l4 2" />
+                </svg>
+              </div>
+              <h3>Float Therapy</h3>
+              <p>
+                60–90 minutes of weightless, sensory-free floating in 1,000 lbs
+                of Epsom salt water. Proven stress relief and pain reduction.
+              </p>
+              <div class="service-price">$89 <span>/ 60 min</span></div>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M3 12h18M12 3c0 9-4.5 13.5-9 13.5" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+              </div>
+              <h3>Infrared Sauna</h3>
+              <p>
+                Detoxify and revitalize with our full-spectrum infrared sauna.
+                Promotes circulation, skin health, and deep muscle recovery.
+              </p>
+              <div class="service-price">$45 <span>/ 30 min</span></div>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">
+                <svg viewBox="0 0 24 24">
+                  <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                </svg>
+              </div>
+              <h3>Guided Meditation</h3>
+              <p>
+                Curated soundscapes and guided breathwork sessions designed to
+                deepen your float experience and mental clarity.
+              </p>
+              <div class="service-price">$35 <span>/ session</span></div>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 00-2.91-.09z"
+                  />
+                  <path
+                    d="M12 15l-3-3a22 22 0 012-3.95A12.88 12.88 0 0122 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 01-4 2z"
+                  />
+                </svg>
+              </div>
+              <h3>Aromatherapy</h3>
+              <p>
+                Enhance your session with curated essential oil blends.
+                Lavender, eucalyptus, and frankincense for full sensory harmony.
+              </p>
+              <div class="service-price">$25 <span>/ add-on</span></div>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">
+                <svg viewBox="0 0 24 24">
+                  <path
+                    d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"
+                  />
+                </svg>
+              </div>
+              <h3>Halotherapy</h3>
+              <p>
+                Breathe pure salt-infused air in our Himalayan salt room. Ideal
+                for respiratory health, skin conditions, and relaxation.
+              </p>
+              <div class="service-price">$55 <span>/ 45 min</span></div>
+            </div>
+            <div class="service-card">
+              <div class="service-icon">
+                <svg viewBox="0 0 24 24">
+                  <circle cx="12" cy="12" r="10" />
+                  <path
+                    d="M2 12h20M12 2a15.3 15.3 0 010 20M12 2a15.3 15.3 0 000 20"
+                  />
+                </svg>
+              </div>
+              <h3>Wellness Packages</h3>
+              <p>
+                Curated combinations of float, sauna, and meditation.
+                Memberships available for regular practitioners seeking ongoing
+                wellness.
+              </p>
+              <div class="service-price">From $199 <span>/ month</span></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- HOW IT WORKS -->
+      <section class="section">
+        <div class="section-inner">
+          <div class="how-inner">
+            <div class="how-visual">
+              <div class="how-image" style="background: none">
+                <img
+                  src="assets/images/home_process.png"
+                  alt="Spa Process"
+                  style="width: 100%; height: 100%; object-fit: cover"
+                />
+              </div>
+            </div>
+            <div>
+              <div class="section-label">The Process</div>
+              <h2 class="section-title">Your float <em>journey</em></h2>
+              <p class="section-sub" style="margin-bottom: 36px">
+                From arrival to transformation — a seamless, calming experience
+                at every step.
+              </p>
+              <div class="how-steps">
+                <div class="step">
+                  <div class="step-num">1</div>
+                  <div class="step-content">
+                    <h4>Arrive & Prepare</h4>
+                    <p>
+                      Arrive 15 minutes early. Shower in our private suites,
+                      place earplugs, and leave the world behind. A gentle
+                      shower prepares your skin for the salt water.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">2</div>
+                  <div class="step-content">
+                    <h4>Enter the Pod</h4>
+                    <p>
+                      Step into your private float pod. Water heated to skin
+                      temperature makes you weightless. Soft music guides you
+                      into stillness within minutes.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">3</div>
+                  <div class="step-content">
+                    <h4>Float & Release</h4>
+                    <p>
+                      Let go completely. The buoyancy of Epsom salt water
+                      suspends you effortlessly, relieving tension, quieting the
+                      mind, and entering theta brainwave states.
+                    </p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">4</div>
+                  <div class="step-content">
+                    <h4>Emerge Renewed</h4>
+                    <p>
+                      Music gently returns. Shower off, enjoy herbal tea in our
+                      lounge, and journal your experience. Most guests feel the
+                      calm for days after.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIALS -->
+      <section class="section services-bg">
+        <div class="section-inner">
+          <div class="section-header center">
+            <div class="section-label">Client Stories</div>
+            <h2 class="section-title">What floaters <em>say</em></h2>
+          </div>
+          <div class="testimonials-grid">
+            <div class="testimonial">
+              <div class="t-stars">★★★★★</div>
+              <p class="t-text">
+                "I came in with chronic back pain and left feeling like a
+                completely different person. The float literally reset my entire
+                nervous system."
+              </p>
+              <div class="t-author">
+                <div class="t-avatar">M</div>
+                <div>
+                  <div class="t-name">Maya Chen</div>
+                  <div class="t-role">Yoga Instructor · Member since 2023</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="t-stars">★★★★★</div>
+              <p class="t-text">
+                "As someone with anxiety, I was skeptical. After my third
+                session I had the most peaceful sleep of my life. This is my
+                monthly ritual now."
+              </p>
+              <div class="t-author">
+                <div class="t-avatar">J</div>
+                <div>
+                  <div class="t-name">James Oluwa</div>
+                  <div class="t-role">Software Engineer · Regular Floater</div>
+                </div>
+              </div>
+            </div>
+            <div class="testimonial">
+              <div class="t-stars">★★★★★</div>
+              <p class="t-text">
+                "The staff, the pods, the ambient design — everything about
+                Serene Float is exceptional. I've tried other centers. None
+                compare."
+              </p>
+              <div class="t-author">
+                <div class="t-avatar">S</div>
+                <div>
+                  <div class="t-name">Sara Almari</div>
+                  <div class="t-role">Wellness Coach · Founding Member</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CTA -->
+      <section class="cta-section">
+        <div class="section-inner">
+          <div class="section-label">Begin Your Journey</div>
+          <h2>Ready to float?</h2>
+          <p>
+            Your first session is 20% off. No experience needed — our team will
+            guide you every step of the way.
+          </p>
+          <div class="cta-actions">
+            <button class="btn btn-white" onclick="showPage('auth-signup')">
+              Book Your First Float
+            </button>
+            <button class="btn btn-outline-white" onclick="showPage('contact')">
+              Talk to Us First
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+    </div>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="logo">
+              <div class="logo-icon">
+                <a href="index.html">
+                  <img src="assets/images/logo.png" alt="Serene Float Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                </a>
+              </div>
+              Serene Float
+            </div>
+            <p>
+              A micro-spa sanctuary dedicated to sensory deprivation therapy,
+              mindful healing, and holistic wellness.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h5>Services</h5>
+            <ul>
+              <li><a href="pages/services.html">Float Therapy</a></li>
+              <li><a href="pages/services.html">Infrared Sauna</a></li>
+              <li><a href="pages/services.html">Halotherapy</a></li>
+              <li><a href="pages/services.html">Aromatherapy</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Company</h5>
+            <ul>
+              <li><a href="pages/about.html">About Us</a></li>
+              <li><a href="pages/pricing.html">Pricing</a></li>
+              <li><a href="pages/contact.html">Contact</a></li>
+              <li><a href="#">Gift Cards</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Hours</h5>
+            <ul>
+              <li><a href="#">Mon–Fri: 7am–10pm</a></li>
+              <li><a href="#">Sat: 8am–10pm</a></li>
+              <li><a href="#">Sun: 9am–8pm</a></li>
+              <li><a href="#">Holidays: Varies</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Serene Float. All rights reserved.</p>
+          <p style="font-size: 13px; color: var(--text-light)">
+            Privacy · Terms · Accessibility
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="assets/js/main.js"></script>
+  </body>
+</html>

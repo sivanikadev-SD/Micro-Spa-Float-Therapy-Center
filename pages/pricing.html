@@ -1,0 +1,282 @@
+<!doctype html>
+<html lang="en" data-theme="light" data-dir="ltr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Serene Float — Pricing</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500&family=Poppins:wght@300;400&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../assets/css/style.css" />
+    <link rel="stylesheet" href="../assets/css/dark-mode.css" />
+    <link rel="stylesheet" href="../assets/css/rtl.css" />
+  </head>
+  <body>
+    <header class="site-header" id="siteHeader">
+      <nav class="nav-inner">
+        <a class="logo" href="../index.html">
+          <div class="logo-icon">
+            <a href="../index.html">
+              <img src="../assets/images/logo.png" alt="Serene Float Logo" style="width: 100%; height: 100%; object-fit: contain;">
+            </a>
+          </div>
+          Serene Float
+        </a>
+        <div class="nav-links">
+          <div class="nav-item dropdown">
+            <a class="dropdown-toggle">Home</a>
+            <div class="dropdown-menu">
+              <a class="dropdown-link" href="../index.html">Home v1 (SPA)</a>
+              <a class="dropdown-link" href="home-v2.html">Home v2 (Bento)</a>
+            </div>
+          </div>
+          <a onclick="showPage('services')" data-page="services">Services</a>
+          <a onclick="showPage('about')" data-page="about">About</a>
+          <a onclick="showPage('pricing')" class="active" data-page="pricing">Pricing</a>
+          <a onclick="showPage('contact')" data-page="contact">Contact</a>
+          <a onclick="showPage('dashboard')" data-page="dashboard">Dashboard</a>
+          <div class="mobile-nav-btns">
+            <button onclick="showPage('auth-login')" class="btn btn-secondary">
+              Sign In
+            </button>
+            <button onclick="showPage('auth-signup')" class="btn btn-primary">
+              Book Now
+            </button>
+          </div>
+        </div>
+        <div class="nav-actions">
+          <button
+            class="icon-btn"
+            onclick="toggleTheme()"
+            title="Toggle theme"
+            id="themeBtn"
+          >
+            <svg
+              id="themeIcon"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+            </svg>
+          </button>
+          <button
+            class="icon-btn"
+            onclick="toggleRTL()"
+            title="Toggle RTL"
+            id="rtlBtn"
+          >
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+            >
+              <path d="M3 5h12M9 5v14M3 9l3-3-3-3M15 5h6M15 19h6M15 12h6" />
+            </svg>
+          </button>
+          <a onclick="showPage('auth-login')" class="btn btn-secondary"
+            >Sign In</a
+          >
+          <a onclick="showPage('auth-signup')" class="btn btn-primary"
+            >Book Now</a
+          >
+        </div>
+      </nav>
+    </header>
+    <div id="pricing" class="page active">
+      <div class="page-hero">
+        <div class="page-hero-inner">
+          <div class="section-label" style="justify-content: center">
+            Transparent Pricing
+          </div>
+          <h1 class="section-title">Simple, <em>honest</em> pricing</h1>
+          <p class="section-sub" style="margin: 0 auto">
+            No hidden fees. No pressure. Choose the plan that fits your wellness
+            journey.
+          </p>
+        </div>
+      </div>
+      <section class="section pricing-bg">
+        <div class="section-inner">
+          <div class="pricing-grid">
+            <div class="pricing-card">
+              <div class="pricing-name">Drop-In</div>
+              <div class="pricing-price"><sup>$</sup>89</div>
+              <div class="pricing-period">per float session</div>
+              <ul class="pricing-features">
+                <li>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >One 60-minute float session
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Private suite access
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Shower & amenities included
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Post-float tea lounge
+                </li>
+              </ul>
+              <button
+                class="btn btn-secondary"
+                onclick="showPage('auth-signup')"
+              >
+                Book Now
+              </button>
+            </div>
+            <div class="pricing-card popular">
+              <div class="popular-badge">Most Popular</div>
+              <div class="pricing-name">Seeker Membership</div>
+              <div class="pricing-price"><sup>$</sup>199</div>
+              <div class="pricing-period">per month</div>
+              <ul class="pricing-features">
+                <li>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >4 float sessions/month
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >2 infrared sauna sessions
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Priority booking
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Wellness tracking dashboard
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >10% off add-ons
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Free guest pass monthly
+                </li>
+              </ul>
+              <button class="btn btn-primary" onclick="showPage('auth-signup')">
+                Start Membership
+              </button>
+            </div>
+            <div class="pricing-card">
+              <div class="pricing-name">Sanctuary Membership</div>
+              <div class="pricing-price"><sup>$</sup>349</div>
+              <div class="pricing-period">per month</div>
+              <ul class="pricing-features">
+                <li>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Unlimited float sessions
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Unlimited sauna access
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Monthly halotherapy
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >Personal wellness coach
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >20% off all add-ons
+                </li>
+                <li>
+                  <svg viewBox="0 0 24 24">
+                    <polyline points="20 6 9 17 4 12" /></svg
+                  >2 guest passes monthly
+                </li>
+              </ul>
+              <button
+                class="btn btn-secondary"
+                onclick="showPage('auth-signup')"
+              >
+                Go Sanctuary
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="logo">
+              <div class="logo-icon">
+                <a href="../index.html">
+                  <img src="../assets/images/logo.png" alt="Serene Float Logo" style="width: 100%; height: 100%; object-fit: contain;">
+                </a>
+              </div>
+              Serene Float
+            </div>
+            <p>
+              A micro-spa sanctuary dedicated to sensory deprivation therapy,
+              mindful healing, and holistic wellness.
+            </p>
+          </div>
+          <div class="footer-col">
+            <h5>Services</h5>
+            <ul>
+              <li><a onclick="showPage('services')">Float Therapy</a></li>
+              <li><a onclick="showPage('services')">Infrared Sauna</a></li>
+              <li><a onclick="showPage('services')">Halotherapy</a></li>
+              <li><a onclick="showPage('services')">Aromatherapy</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Company</h5>
+            <ul>
+              <li><a onclick="showPage('about')">About Us</a></li>
+              <li><a onclick="showPage('pricing')">Pricing</a></li>
+              <li><a onclick="showPage('contact')">Contact</a></li>
+              <li><a href="#">Gift Cards</a></li>
+            </ul>
+          </div>
+          <div class="footer-col">
+            <h5>Hours</h5>
+            <ul>
+              <li><a href="#">Mon–Fri: 7am–10pm</a></li>
+              <li><a href="#">Sat: 8am–10pm</a></li>
+              <li><a href="#">Sun: 9am–8pm</a></li>
+              <li><a href="#">Holidays: Varies</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="footer-bottom">
+          <p>© 2025 Serene Float. All rights reserved.</p>
+          <p style="font-size: 13px; color: var(--text-light)">
+            Privacy · Terms · Accessibility
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="../assets/js/main.js"></script>
+  </body>
+</html>
