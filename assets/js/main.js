@@ -87,16 +87,45 @@ document.addEventListener('DOMContentLoaded', () => {
   if (navInner && !document.querySelector('.mobile-toggle')) {
     const toggleBtn = document.createElement('button');
     toggleBtn.className = 'icon-btn mobile-toggle';
-    toggleBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
+    toggleBtn.setAttribute('aria-label', 'Toggle menu');
+    toggleBtn.setAttribute('aria-expanded', 'false');
 
-    const navActions = document.querySelector('.nav-actions');
-    if (navActions) navInner.insertBefore(toggleBtn, navActions);
-    else navInner.appendChild(toggleBtn);
+    const hamburgerIcon = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
+    const closeIcon     = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12"/></svg>';
+    toggleBtn.innerHTML = hamburgerIcon;
+
+    // Append after nav-links so it sits at the end inside flex
+    navInner.appendChild(toggleBtn);
+
+    const navLinks = document.querySelector('.nav-links');
 
     toggleBtn.addEventListener('click', () => {
-      const navLinks = document.querySelector('.nav-links');
-      if (navLinks) navLinks.classList.toggle('mobile-open');
+      const isOpen = navLinks.classList.toggle('mobile-open');
+      toggleBtn.innerHTML = isOpen ? closeIcon : hamburgerIcon;
+      toggleBtn.setAttribute('aria-expanded', String(isOpen));
+      document.body.style.overflow = isOpen ? 'hidden' : '';
     });
+
+    // Close drawer when a real nav link (not dropdown toggle) is clicked
+    if (navLinks) {
+      navLinks.querySelectorAll('a:not(.dropdown-toggle):not(.dropdown-link)').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('mobile-open');
+          toggleBtn.innerHTML = hamburgerIcon;
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+      // Also close on dropdown links
+      navLinks.querySelectorAll('.dropdown-link').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('mobile-open');
+          toggleBtn.innerHTML = hamburgerIcon;
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          document.body.style.overflow = '';
+        });
+      });
+    }
   }
 
   const dashTopbarRight = document.querySelector('.dash-topbar-right');

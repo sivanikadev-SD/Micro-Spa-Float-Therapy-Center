@@ -15,7 +15,7 @@
   <body>
     <header class="site-header" id="siteHeader">
       <nav class="nav-inner">
-        <a class="logo" onclick="showPage('home')">
+        <a class="logo" href="index.html">
           <div class="logo-icon">
             <img src="assets/images/logo.png" alt="Serene Float Logo" style="width: 100%; height: 100%; object-fit: contain;">
           </div>
@@ -23,23 +23,33 @@
         </a>
         <div class="nav-links">
           <div class="nav-item dropdown">
-            <a class="dropdown-toggle" onclick="showPage('home')">Home</a>
+            <a class="dropdown-toggle" href="index.html">Home</a>
             <div class="dropdown-menu">
               <a class="dropdown-link" href="index.html">Home v1 (SPA)</a>
               <a class="dropdown-link" href="pages/home-v2.html">Home v2 (Bento)</a>
             </div>
           </div>
-          <a href="pages/services.html" data-page="services">Services</a>
           <a href="pages/about.html" data-page="about">About</a>
+          <a href="pages/services.html" data-page="services">Services</a>
           <a href="pages/pricing.html" data-page="pricing">Pricing</a>
           <a href="pages/contact.html" data-page="contact">Contact</a>
           <a href="pages/dashboard.html" data-page="dashboard">Dashboard</a>
+          <!-- Mobile-only CTA buttons -->
           <div class="mobile-nav-btns">
-            <button href="pages/login.html" class="btn btn-secondary">
-              Sign In
+            <a href="pages/login.html" class="btn btn-secondary">Sign In</a>
+            <a href="pages/signup.html" class="btn btn-primary">Book Now</a>
+          </div>
+          <!-- Mobile-only icon row (theme / RTL toggles) -->
+          <div class="mobile-icon-row">
+            <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+              </svg>
             </button>
-            <button href="pages/signup.html" class="btn btn-primary">
-              Book Now
+            <button class="icon-btn" onclick="toggleRTL()" title="Toggle RTL">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 5h12M9 5v14M3 9l3-3-3-3M15 5h6M15 19h6M15 12h6" />
+              </svg>
             </button>
           </div>
         </div>
@@ -366,7 +376,7 @@
             <div class="testimonial">
               <div class="t-stars">★★★★★</div>
               <p class="t-text">
-                "The staff, the pods, the ambient design — everything about
+                "The staff, the pods, the ambient design and the overall experience — everything about
                 Serene Float is exceptional. I've tried other centers. None
                 compare."
               </p>
@@ -450,7 +460,7 @@
           </div>
         </div>
         <div class="footer-bottom">
-          <p>© 2025 Serene Float. All rights reserved.</p>
+          <p>© 2026 Serene Float. All rights reserved.</p>
           <p style="font-size: 13px; color: var(--text-light)">
             Privacy · Terms · Accessibility
           </p>

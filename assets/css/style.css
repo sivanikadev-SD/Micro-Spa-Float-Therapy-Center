@@ -107,7 +107,6 @@ button {
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 40px;
 }
 .logo {
   display: flex;
@@ -119,6 +118,7 @@ button {
   letter-spacing: 0.02em;
   color: var(--primary);
   white-space: nowrap;
+  flex: 0 0 auto;
 }
 .logo-icon {
   width: 36px;
@@ -133,11 +133,13 @@ button {
   height: 20px;
   fill: white;
 }
+/* Nav links: centered between logo and actions */
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 6px;
+  gap: 4px;
   flex: 1;
+  justify-content: center;
 }
 .nav-links a {
   font-size: 14px;
@@ -146,16 +148,19 @@ button {
   padding: 8px 14px;
   border-radius: var(--radius-sm);
   transition: var(--transition);
+  white-space: nowrap;
 }
 .nav-links a:hover,
 .nav-links a.active {
   color: var(--primary);
   background: color-mix(in srgb, var(--primary) 8%, transparent);
 }
+/* Nav actions: pinned to the right */
 .nav-actions {
   display: flex;
   align-items: center;
   gap: 10px;
+  flex: 0 0 auto;
   margin-left: auto;
 }
 .icon-btn {
@@ -194,12 +199,12 @@ button {
 }
 .btn-primary {
   background: var(--primary);
-  color: var(--bg);
+  color: var(--surface);
   border: 1.5px solid var(--primary);
 }
 .btn-primary:hover {
-  background: var(--primary-dark);
-  border-color: var(--primary-dark);
+  background: var(--secondary);
+  border-color: var(--secondary);
   transform: translateY(-1px);
   box-shadow: 0 4px 16px color-mix(in srgb, var(--primary) 35%, transparent);
 }
@@ -2095,6 +2100,44 @@ textarea.form-control {
 /* =========================================
    RESPONSIVE
    ========================================= */
+
+/* ---- 1024 px: Tighten navbar so everything fits on one row ---- */
+@media (max-width: 1080px) {
+  .nav-inner {
+    gap: 16px;
+    padding: 0 20px;
+  }
+  .logo {
+    font-size: 19px;
+    gap: 8px;
+  }
+  .logo-icon {
+    width: 30px;
+    height: 30px;
+  }
+  .nav-links {
+    gap: 0;
+    flex: 1;
+  }
+  .nav-links a,
+  .dropdown-toggle {
+    padding: 7px 10px;
+    font-size: 13px;
+  }
+  .nav-actions {
+    gap: 6px;
+    margin-left: 0;
+  }
+  .nav-actions .btn {
+    padding: 8px 14px;
+    font-size: 13px;
+  }
+  .icon-btn {
+    width: 34px;
+    height: 34px;
+  }
+}
+
 @media (max-width: 900px) {
   .hero-inner,
   .how-inner,
@@ -2134,65 +2177,110 @@ textarea.form-control {
   display: none;
 }
 
+/* ---- Mobile Nav Drawer ---- */
 @media (max-width: 768px) {
+  /* Nav inner: logo left, hamburger right */
+  .nav-inner {
+    gap: 0;
+    justify-content: space-between;
+  }
+
+  /* Logo stays order 1 on the left */
+  .logo {
+    order: 1;
+    flex: 0 0 auto;
+  }
+
+  /* Icon buttons in topbar (theme/RTL) — hide on small screens */
+  .nav-actions {
+    display: none;
+  }
+
+  /* Hamburger button — far right */
+  .mobile-toggle {
+    display: flex;
+    order: 2;
+    margin-left: auto;
+  }
+
+  /* Full-screen slide drawer */
   .nav-links {
     position: fixed;
     top: var(--nav-h);
     left: 0;
     right: 0;
+    bottom: 0;
     background: var(--bg);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     flex-direction: column;
     align-items: stretch;
-    padding: 24px;
-    border-bottom: 1px solid var(--border);
-    transform: translateY(-100%);
+    padding: 20px 24px 32px;
+    border-top: 1px solid var(--border);
+    box-shadow: 0 8px 32px rgba(31,58,74,0.12);
+    overflow-y: auto;
+    /* Hidden state */
+    transform: translateX(100%);
     opacity: 0;
     pointer-events: none;
-    transition: var(--transition);
+    visibility: hidden;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1),
+                opacity 0.3s ease,
+                visibility 0s linear 0.35s;
+    z-index: 99;
   }
+
+  /* Open state */
   .nav-links.mobile-open {
-    transform: translateY(0);
+    transform: translateX(0);
     opacity: 1;
     pointer-events: auto;
+    visibility: visible;
+    transition: transform 0.35s cubic-bezier(0.4,0,0.2,1),
+                opacity 0.3s ease,
+                visibility 0s linear 0s;
+  }
+
+  /* Individual nav links inside drawer */
+  .nav-links > a,
+  .nav-links > .nav-item {
+    width: 100%;
   }
   .nav-links a {
-    width: 100%;
-    text-align: left;
-    padding: 12px 16px;
+    display: block;
+    padding: 14px 16px;
+    font-size: 16px;
+    border-radius: var(--radius-sm);
+    border-bottom: 1px solid var(--border);
   }
-  .nav-inner {
-    gap: 12px;
+  .nav-links a:last-of-type {
+    border-bottom: none;
   }
-  .mobile-toggle {
-    display: flex;
-    order: 3;
-    margin-left: 4px;
-  }
-  .nav-actions {
-    margin-left: auto;
-    order: 2;
-    gap: 8px;
-  }
-  .nav-actions .btn {
-    display: none;
-  } /* Hide standard buttons on mobile interface */
 
+  /* Icon buttons shown inside the drawer at the bottom */
+  .mobile-icon-row {
+    display: flex;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border);
+  }
+
+  /* CTA buttons inside the drawer */
   .mobile-nav-btns {
     display: flex;
     flex-direction: column;
     gap: 12px;
     width: 100%;
-    margin-top: 16px;
-    padding-top: 16px;
-    border-top: 1px solid var(--border);
+    margin-top: 12px;
   }
   .mobile-nav-btns .btn {
     width: 100%;
     justify-content: center;
+    padding: 13px 22px;
   }
 
+  /* Dashboard sidebar */
   .dash-sidebar {
     position: fixed;
     left: -280px;
@@ -2215,6 +2303,9 @@ textarea.form-control {
   .mobile-toggle,
   .dash-mobile-toggle {
     display: none !important;
+  }
+  .mobile-icon-row {
+    display: none;
   }
 }
 
