@@ -89,7 +89,7 @@ button {
   top: 0;
   left: 0;
   right: 0;
-  z-index: 100;
+  z-index: 500;
   height: var(--nav-h);
   background: var(--bg);
   border-bottom: 1px solid var(--border);
@@ -111,7 +111,7 @@ button {
 .logo {
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
   font-family: var(--font-display);
   font-size: 22px;
   font-weight: 500;
@@ -121,8 +121,8 @@ button {
   flex: 0 0 auto;
 }
 .logo-icon {
-  width: 36px;
-  height: 36px;
+  width: 60px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2109,11 +2109,11 @@ textarea.form-control {
   }
   .logo {
     font-size: 19px;
-    gap: 8px;
+    gap: 5px;
   }
   .logo-icon {
-    width: 30px;
-    height: 30px;
+    width: 60px;
+    height: 60px;
   }
   .nav-links {
     gap: 0;
@@ -2177,8 +2177,8 @@ textarea.form-control {
   display: none;
 }
 
-/* ---- Mobile Nav Drawer ---- */
-@media (max-width: 768px) {
+/* ---- Mobile Nav Drawer (tablet + mobile) ---- */
+@media (max-width: 900px) {
   /* Nav inner: logo left, hamburger right */
   .nav-inner {
     gap: 0;
@@ -2211,13 +2211,12 @@ textarea.form-control {
     right: 0;
     bottom: 0;
     background: var(--bg);
-    backdrop-filter: blur(20px);
-    -webkit-backdrop-filter: blur(20px);
+    /* No backdrop-filter — solid bg keeps content hidden */
     flex-direction: column;
     align-items: stretch;
     padding: 20px 24px 32px;
     border-top: 1px solid var(--border);
-    box-shadow: 0 8px 32px rgba(31,58,74,0.12);
+    box-shadow: 0 8px 32px rgba(31,58,74,0.18);
     overflow-y: auto;
     /* Hidden state */
     transform: translateX(100%);
@@ -2227,7 +2226,7 @@ textarea.form-control {
     transition: transform 0.35s cubic-bezier(0.4,0,0.2,1),
                 opacity 0.3s ease,
                 visibility 0s linear 0.35s;
-    z-index: 99;
+    z-index: 9000;
   }
 
   /* Open state */
@@ -2299,7 +2298,7 @@ textarea.form-control {
   }
 }
 
-@media (min-width: 769px) {
+@media (min-width: 901px) {
   .mobile-toggle,
   .dash-mobile-toggle {
     display: none !important;
@@ -2424,6 +2423,22 @@ textarea.form-control {
 }
 [data-theme="dark"] .site-header {
   background: rgba(15, 32, 39, 0.7) !important;
+}
+
+/* ---- CRITICAL: On mobile, remove backdrop-filter from header.
+   backdrop-filter creates a CSS containing block, which traps
+   position:fixed children (the nav drawer) inside the 76px header
+   instead of the full viewport. Removing it fixes the drawer. ---- */
+@media (max-width: 900px) {
+  .site-header {
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    background: var(--bg) !important;
+    z-index: 200;
+  }
+  [data-theme="dark"] .site-header {
+    background: var(--bg) !important;
+  }
 }
 
 /* Animations and Glow */
@@ -2766,24 +2781,33 @@ textarea.form-control {
     width: 100%;
     justify-content: space-between;
     padding: 12px 20px;
+    border-bottom: 1px solid var(--border);
   }
+  /* Dropdown hidden by default in mobile drawer — JS toggles .open */
   .dropdown-menu {
     position: static;
     opacity: 1;
     visibility: visible;
     transform: none;
     box-shadow: none;
-    background: transparent;
+    background: var(--bg-alt);
     border: none;
-    padding: 0 0 0 20px;
+    border-radius: var(--radius-sm);
+    padding: 6px 0 6px 16px;
     margin-top: 0;
+    margin-bottom: 4px;
     width: 100%;
-    display: none; /* Toggle this via JS if needed, or just show it */
+    height: auto;
+    display: none;
+    transition: none;
   }
-  .nav-links.mobile-open .dropdown-menu {
+  /* Show when parent nav-item has .open class (toggled by JS) */
+  .nav-item.dropdown.open .dropdown-menu {
     display: block;
   }
   .dropdown-link {
     padding: 10px 20px;
+    border-bottom: none;
+    font-size: 15px;
   }
 }

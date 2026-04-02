@@ -2,6 +2,7 @@
 function showPage(id) {
   const pageMap = {
     'home': '../index.html',
+    'home-v2': 'home-v2.html',
     'services': 'services.html',
     'about': 'about.html',
     'pricing': 'pricing.html',
@@ -99,30 +100,44 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const navLinks = document.querySelector('.nav-links');
 
+    function closeMobileNav() {
+      navLinks.classList.remove('mobile-open');
+      toggleBtn.innerHTML = hamburgerIcon;
+      toggleBtn.setAttribute('aria-expanded', 'false');
+      document.body.style.overflow = '';
+      // Reset all open dropdowns
+      navLinks.querySelectorAll('.nav-item.dropdown.open').forEach(item => item.classList.remove('open'));
+    }
+
     toggleBtn.addEventListener('click', () => {
       const isOpen = navLinks.classList.toggle('mobile-open');
       toggleBtn.innerHTML = isOpen ? closeIcon : hamburgerIcon;
       toggleBtn.setAttribute('aria-expanded', String(isOpen));
       document.body.style.overflow = isOpen ? 'hidden' : '';
+      if (!isOpen) {
+        navLinks.querySelectorAll('.nav-item.dropdown.open').forEach(item => item.classList.remove('open'));
+      }
     });
 
-    // Close drawer when a real nav link (not dropdown toggle) is clicked
     if (navLinks) {
+      // Close drawer when a regular link is clicked
       navLinks.querySelectorAll('a:not(.dropdown-toggle):not(.dropdown-link)').forEach(link => {
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('mobile-open');
-          toggleBtn.innerHTML = hamburgerIcon;
-          toggleBtn.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
-        });
+        link.addEventListener('click', closeMobileNav);
       });
-      // Also close on dropdown links
+      // Close drawer when a dropdown-link is clicked
       navLinks.querySelectorAll('.dropdown-link').forEach(link => {
-        link.addEventListener('click', () => {
-          navLinks.classList.remove('mobile-open');
-          toggleBtn.innerHTML = hamburgerIcon;
-          toggleBtn.setAttribute('aria-expanded', 'false');
-          document.body.style.overflow = '';
+        link.addEventListener('click', closeMobileNav);
+      });
+
+      // Mobile accordion: toggle .open on the parent nav-item when dropdown-toggle is clicked
+      navLinks.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+          // Only intercept in mobile/tablet view (hamburger is visible)
+          if (window.innerWidth <= 900) {
+            e.preventDefault();
+            const navItem = toggle.closest('.nav-item.dropdown');
+            if (navItem) navItem.classList.toggle('open');
+          }
         });
       });
     }
