@@ -11,6 +11,16 @@
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/dark-mode.css" />
     <link rel="stylesheet" href="../assets/css/rtl.css" />
+    <link rel="icon" href="../assets/images/logo.png" type="image/png" />
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme') || 'light';
+        const dir = localStorage.getItem('dir') || 'ltr';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('data-dir', dir);
+        document.documentElement.setAttribute('dir', dir);
+      })();
+    </script>
   </head>
   <body>
     <header class="site-header" id="siteHeader">
@@ -38,6 +48,19 @@
             <button onclick="showPage('auth-login')" class="btn btn-secondary">Sign In</button>
             <button onclick="showPage('auth-signup')" class="btn btn-primary">Book Now</button>
           </div>
+          <!-- Mobile-only icon row (theme / RTL toggles) -->
+          <div class="mobile-icon-row">
+            <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+              </svg>
+            </button>
+            <button class="icon-btn" onclick="toggleRTL()" title="Toggle RTL">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 5h12M9 5v14M3 9l3-3-3-3M15 5h6M15 19h6M15 12h6" />
+              </svg>
+            </button>
+          </div>
         </div>
         <div class="nav-actions">
           <button class="icon-btn" onclick="toggleTheme()" id="themeBtn"><svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" /></svg></button>
@@ -55,7 +78,7 @@
           <img src="../assets/images/home_v2_hero.png" alt="Luxurious Serene Spa" />
         </div>
         <div class="section-inner">
-          <div class="hero-content" style="max-width: 600px;">
+          <div class="hero-content" style="max-width: 980px;">
             <div class="hero-label fade-up">Elevated Stillness</div>
             <h1 class="fade-up">Recalibrate your <br><em>entire</em> being.</h1>
             <p class="hero-desc fade-up">Portland's premier sensory deprivation sanctuary. Step into the void, leave the noise behind, and rediscover your inner rhythm.</p>
@@ -115,7 +138,7 @@
             <div class="section-label">The Science</div>
             <h2 class="section-title">Beyond <em>relaxation</em></h2>
           </div>
-          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px; margin-top: 48px;">
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 32px; margin-top: 48px;">
             <div class="benefit-card reveal">
               <div class="benefit-icon">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21a9 9 0 100-18 9 9 0 000 18z"/><path d="M12 7v5l3 3"/></svg>

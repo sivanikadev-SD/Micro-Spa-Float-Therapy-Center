@@ -11,6 +11,16 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <link rel="stylesheet" href="assets/css/dark-mode.css" />
     <link rel="stylesheet" href="assets/css/rtl.css" />
+    <link rel="icon" href="assets/images/logo.png" type="image/png" />
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme') || 'light';
+        const dir = localStorage.getItem('dir') || 'ltr';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('data-dir', dir);
+        document.documentElement.setAttribute('dir', dir);
+      })();
+    </script>
   </head>
   <body>
     <header class="site-header" id="siteHeader">
@@ -110,7 +120,7 @@
               from the world, restore your mind, and emerge transformed.
             </p>
             <div class="hero-actions fade-up fade-up-4">
-              <button class="btn btn-primary" href="pages/signup.html">
+              <a class="btn btn-primary" href="pages/signup.html">
                 <svg
                   width="16"
                   height="16"
@@ -123,10 +133,10 @@
                   <path d="M16 2v4M8 2v4M3 10h18" />
                 </svg>
                 Book a Session
-              </button>
-              <button class="btn btn-secondary" href="pages/services.html">
+              </a>
+              <a class="btn btn-secondary" href="pages/services.html">
                 Explore Services
-              </button>
+              </a>
             </div>
           </div>
           <div class="hero-visual fade-up fade-up-3">
@@ -335,8 +345,64 @@
         </div>
       </section>
 
+      <!-- MEMBERSHIP PERKS -->
+      <section class="section">
+        <div class="section-inner">
+          <div class="section-header center">
+            <div class="section-label">Why Choose Us</div>
+            <h2 class="section-title">The <em>Sanctuary</em> Membership</h2>
+            <p class="section-sub">
+              Commit to your wellbeing and enjoy exclusive benefits that make regular floating effortless.
+            </p>
+          </div>
+          <div class="services-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));">
+            <div class="service-card" style="text-align: center;">
+              <div class="service-icon" style="margin: 0 auto 20px;">
+                <svg viewBox="0 0 24 24"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              </div>
+              <h3>Priority Booking</h3>
+              <p>Secure your preferred timeslots weeks in advance, including prime weekend hours.</p>
+            </div>
+            <div class="service-card" style="text-align: center;">
+              <div class="service-icon" style="margin: 0 auto 20px;">
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+              </div>
+              <h3>Rollover Credits</h3>
+              <p>Missed a month? Your float credits never expire and roll over to the next month.</p>
+            </div>
+            <div class="service-card" style="text-align: center;">
+              <div class="service-icon" style="margin: 0 auto 20px;">
+                <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+              </div>
+              <h3>Guest Passes</h3>
+              <p>Share the bliss. Bring a friend or family member for their first float at your member rate.</p>
+            </div>
+            <div class="service-card" style="text-align: center;">
+              <div class="service-icon" style="margin: 0 auto 20px;">
+                <svg viewBox="0 0 24 24"><path d="M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z"/><line x1="7" y1="7" x2="7.01" y2="7"/></svg>
+              </div>
+              <h3>Retail Discounts</h3>
+              <p>Enjoy 15% off all retail products, including premium Epsom salts and essential oils.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FEATURED IN STRIP -->
+      <section class="section services-bg" style="padding: 40px 0;">
+        <div class="section-inner">
+          <p style="text-align: center; color: var(--text-muted); text-transform: uppercase; letter-spacing: 2px; font-size: 13px; margin-bottom: 24px;">As Featured In</p>
+          <div style="display: flex; justify-content: center; gap: 40px; flex-wrap: wrap; opacity: 0.6; filter: grayscale(100%);">
+            <h3 style="font-family: var(--font-display); margin:0;">Portland Living</h3>
+            <h3 style="font-family: var(--font-body); font-weight: 300; margin:0;">WELLNESS TODAY</h3>
+            <h3 style="font-family: var(--font-display); font-style: italic; margin:0;">The Oregon Spa Guide</h3>
+            <h3 style="font-family: var(--font-body); font-weight: 500; letter-spacing: 1px; margin:0;">MIND + BODY</h3>
+          </div>
+        </div>
+      </section>
+
       <!-- TESTIMONIALS -->
-      <section class="section services-bg">
+      <section class="section">
         <div class="section-inner">
           <div class="section-header center">
             <div class="section-label">Client Stories</div>
@@ -402,12 +468,12 @@
             guide you every step of the way.
           </p>
           <div class="cta-actions">
-            <button class="btn btn-white" onclick="showPage('auth-signup')">
+            <a class="btn btn-white" href="pages/signup.html">
               Book Your First Float
-            </button>
-            <button class="btn btn-outline-white" onclick="showPage('contact')">
+            </a>
+            <a class="btn btn-outline-white" href="pages/contact.html">
               Talk to Us First
-            </button>
+            </a>
           </div>
         </div>
       </section>

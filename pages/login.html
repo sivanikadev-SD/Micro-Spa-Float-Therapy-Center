@@ -8,15 +8,25 @@
 <link rel="stylesheet" href="../assets/css/style.css">
 <link rel="stylesheet" href="../assets/css/dark-mode.css">
 <link rel="stylesheet" href="../assets/css/rtl.css">
-</head>
+    <link rel="icon" href="../assets/images/logo.png" type="image/png" />
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme') || 'light';
+        const dir = localStorage.getItem('dir') || 'ltr';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('data-dir', dir);
+        document.documentElement.setAttribute('dir', dir);
+      })();
+    </script>
+  </head>
 <body>
-<div id="auth-login" class="page active">
+<div id="auth-login" class="page active" style="background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('../assets/images/home_hero.png') center/cover fixed;">
   <div class="auth-header-bar">
-    <button class="icon-btn" onclick="toggleTheme()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+    <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme" id="themeBtn">
+      <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
     </button>
-    <button class="icon-btn" onclick="toggleRTL()">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M3 5h12M9 5v14M3 9l3-3-3-3M15 5h6M15 19h6M15 12h6"/></svg>
+    <button class="icon-btn" onclick="toggleRTL()" title="Toggle RTL" id="rtlBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 5h12M9 5v14M3 9l3-3-3-3M15 5h6M15 19h6M15 12h6"/></svg>
     </button>
   </div>
   <div class="auth-card">
@@ -65,8 +75,6 @@
     </div>
   </div>
 </div>
-
 <script src="../assets/js/main.js"></script>
-
 </body>
 </html>

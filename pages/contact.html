@@ -11,6 +11,16 @@
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/dark-mode.css" />
     <link rel="stylesheet" href="../assets/css/rtl.css" />
+    <link rel="icon" href="../assets/images/logo.png" type="image/png" />
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme') || 'light';
+        const dir = localStorage.getItem('dir') || 'ltr';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('data-dir', dir);
+        document.documentElement.setAttribute('dir', dir);
+      })();
+    </script>
   </head>
   <body>
     <header class="site-header" id="siteHeader">
@@ -40,6 +50,19 @@
             </button>
             <button onclick="showPage('auth-signup')" class="btn btn-primary">
               Book Now
+            </button>
+          </div>
+          <!-- Mobile-only icon row (theme / RTL toggles) -->
+          <div class="mobile-icon-row">
+            <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+              </svg>
+            </button>
+            <button class="icon-btn" onclick="toggleRTL()" title="Toggle RTL">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 5h12M9 5v14M3 9l3-3-3-3M15 5h6M15 19h6M15 12h6" />
+              </svg>
             </button>
           </div>
         </div>
@@ -85,16 +108,11 @@
       </nav>
     </header>
     <div id="contact" class="page active">
-      <div class="page-hero">
+      <div class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../assets/images/salt_room.png') center/cover; padding: 140px 32px 80px; color: white;">
         <div class="page-hero-inner">
-          <div class="section-label" style="justify-content: center">
-            Get In Touch
-          </div>
-          <h1 class="section-title">We'd love to <em>hear</em> from you</h1>
-          <p class="section-sub" style="margin: 0 auto">
-            Questions about your first float? Want to gift a session? We're here
-            to help.
-          </p>
+          <div class="section-label" style="justify-content: center; color: rgba(255,255,255,0.9);">Get In Touch</div>
+          <h1 class="section-title" style="color: white;">We'd love to <em>hear</em> from you</h1>
+          <p class="section-sub" style="color: rgba(255,255,255,0.85); max-width: 600px; margin: 0 auto;">Questions about your first float? Want to gift a session? We're here to help.</p>
         </div>
       </div>
       <section class="section">
@@ -214,6 +232,67 @@
                 ></iframe>
               </div>
             </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SOCIAL PROOF / HOURS -->
+      <section class="section services-bg">
+        <div class="section-inner">
+          <div class="section-header center">
+            <div class="section-label">Visit Us</div>
+            <h2 class="section-title">We're open <em>seven days</em> a week</h2>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:24px;margin-top:48px;">
+            <div class="value-card" style="text-align:center;">
+              <h4>Monday – Friday</h4>
+              <p style="font-size:22px;font-family:var(--font-display);color:var(--primary);margin:8px 0;">7:00 am – 10:00 pm</p>
+              <p>Last session starts at 8:30 pm</p>
+            </div>
+            <div class="value-card" style="text-align:center;">
+              <h4>Saturday</h4>
+              <p style="font-size:22px;font-family:var(--font-display);color:var(--primary);margin:8px 0;">8:00 am – 10:00 pm</p>
+              <p>Last session starts at 8:30 pm</p>
+            </div>
+            <div class="value-card" style="text-align:center;">
+              <h4>Sunday</h4>
+              <p style="font-size:22px;font-family:var(--font-display);color:var(--primary);margin:8px 0;">9:00 am – 8:00 pm</p>
+              <p>Last session starts at 6:30 pm</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY CHOOSE US -->
+      <section class="section">
+        <div class="section-inner">
+          <div class="section-header center">
+            <div class="section-label">Why Serene Float</div>
+            <h2 class="section-title">What makes us <em>different</em></h2>
+          </div>
+          <div class="values-grid" style="margin-top:48px;">
+            <div class="value-card">
+              <h4>Same-Day Booking Available</h4>
+              <p>Walk-in sessions are welcome subject to availability. Book online for guaranteed access to your preferred suite and time slot.</p>
+            </div>
+            <div class="value-card">
+              <h4>Fully Private Suites</h4>
+              <p>Every float, sauna, and salt room session is completely private. You'll never share a space with another guest. This is your sanctuary.</p>
+            </div>
+            <div class="value-card">
+              <h4>Inclusive &amp; Accessible</h4>
+              <p>All suites are fully accessible. We offer sliding-scale rates for those in financial need. Healing is for everyone — full stop.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TESTIMONIAL DARK BANNER -->
+      <section class="section services-bg">
+        <div class="section-inner">
+          <div class="testimonial-dark-banner">
+            <blockquote>"The team at Serene Float answered every single one of my first-timer questions before I even booked. The warmth and professionalism here is unmatched in Portland."</blockquote>
+            <cite>— Maya Chen, Yoga Instructor &amp; Member since 2023</cite>
           </div>
         </div>
       </section>

@@ -28,8 +28,9 @@ function showPanel(id) {
     notifications: 'Notifications'
   };
   document.getElementById('dashTitle').textContent = titles[id] || 'Dashboard';
-  event.currentTarget && event.currentTarget.classList.add('active');
   // Try activating button that called this
+  const target = event && event.currentTarget;
+  if (target) target.classList.add('active');
   document.querySelectorAll('.dash-nav-link').forEach(btn => {
     if (btn.getAttribute('onclick') && btn.getAttribute('onclick').includes("'" + id + "'")) {
       btn.classList.add('active');
@@ -37,22 +38,54 @@ function showPanel(id) {
   });
 }
 
+// =================== GLOBAL PERSISTENCE ===================
+function initSettings() {
+  const html = document.documentElement;
+  const savedTheme = localStorage.getItem('theme') || 'light';
+  const savedDir = localStorage.getItem('dir') || 'ltr';
+  
+  html.setAttribute('data-theme', savedTheme);
+  html.setAttribute('data-dir', savedDir);
+  html.setAttribute('dir', savedDir);
+
+  // Update theme icon if on page with theme toggle
+  const themeIcon = document.getElementById('themeIcon');
+  if (themeIcon) {
+    const isDark = savedTheme === 'dark';
+    themeIcon.innerHTML = isDark
+      ? '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>'
+      : '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+  }
+}
+// Run immediately on script load
+initSettings();
+
 // =================== THEME TOGGLE ===================
 function toggleTheme() {
   const html = document.documentElement;
   const isDark = html.getAttribute('data-theme') === 'dark';
-  html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-  document.getElementById('themeIcon').innerHTML = isDark
-    ? '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>'
-    : '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+  const newTheme = isDark ? 'light' : 'dark';
+  
+  html.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+  
+  const themeIcon = document.getElementById('themeIcon');
+  if (themeIcon) {
+    themeIcon.innerHTML = !isDark
+      ? '<path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/>'
+      : '<circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/>';
+  }
 }
 
 // =================== RTL TOGGLE ===================
 function toggleRTL() {
   const html = document.documentElement;
   const isRTL = html.getAttribute('data-dir') === 'rtl';
-  html.setAttribute('data-dir', isRTL ? 'ltr' : 'rtl');
-  html.setAttribute('dir', isRTL ? 'ltr' : 'rtl');
+  const newDir = isRTL ? 'ltr' : 'rtl';
+  
+  html.setAttribute('data-dir', newDir);
+  html.setAttribute('dir', newDir);
+  localStorage.setItem('dir', newDir);
 }
 
 // =================== PASSWORD TOGGLE ===================
@@ -148,7 +181,7 @@ document.addEventListener('DOMContentLoaded', () => {
   if (dashTopbarRight && dashSidebar && !document.querySelector('.dash-mobile-toggle')) {
     const dashToggleBtn = document.createElement('button');
     dashToggleBtn.className = 'icon-btn dash-mobile-toggle';
-    dashToggleBtn.style.marginRight = 'auto'; // Push title right
+    // dashToggleBtn.style.marginRight = 'auto'; // Removed to avoid title push
     dashToggleBtn.innerHTML = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>';
 
     const dashTopbar = document.querySelector('.dash-topbar');
@@ -163,3 +196,12 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+
+// =================== FAQ ACCORDION ===================
+function toggleFaq(btn) {
+  const item = btn.closest('.faq-item');
+  const isOpen = item.classList.contains('open');
+  // Close all
+  document.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+  if (!isOpen) item.classList.add('open');
+}

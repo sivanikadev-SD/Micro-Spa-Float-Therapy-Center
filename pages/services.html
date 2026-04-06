@@ -11,6 +11,16 @@
     <link rel="stylesheet" href="../assets/css/style.css" />
     <link rel="stylesheet" href="../assets/css/dark-mode.css" />
     <link rel="stylesheet" href="../assets/css/rtl.css" />
+    <link rel="icon" href="../assets/images/logo.png" type="image/png" />
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme') || 'light';
+        const dir = localStorage.getItem('dir') || 'ltr';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('data-dir', dir);
+        document.documentElement.setAttribute('dir', dir);
+      })();
+    </script>
   </head>
   <body>
     <header class="site-header" id="siteHeader">
@@ -40,6 +50,19 @@
             </button>
             <button onclick="showPage('auth-signup')" class="btn btn-primary">
               Book Now
+            </button>
+          </div>
+          <!-- Mobile-only icon row (theme / RTL toggles) -->
+          <div class="mobile-icon-row">
+            <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z" />
+              </svg>
+            </button>
+            <button class="icon-btn" onclick="toggleRTL()" title="Toggle RTL">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                <path d="M3 5h12M9 5v14M3 9l3-3-3-3M15 5h6M15 19h6M15 12h6" />
+              </svg>
             </button>
           </div>
         </div>
@@ -85,7 +108,7 @@
       </nav>
     </header>
     <div id="services" class="page active">
-      <div class="page-hero">
+      <div class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../assets/images/float_therapy.png') center/cover; padding: 140px 32px 80px; color: white;">
         <div class="page-hero-inner">
           <div class="section-label" style="justify-content: center">
             Our Offerings
@@ -241,6 +264,125 @@
                   Book Now
                 </button>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- WHY FLOAT? SCIENCE SECTION -->
+      <section class="section services-bg">
+        <div class="section-inner">
+          <div class="section-header center">
+            <div class="section-label">The Science</div>
+            <h2 class="section-title">Clinically proven <em>results</em></h2>
+            <p class="section-sub">Float therapy is backed by decades of research across neuroscience, sports medicine, and psychiatry.</p>
+          </div>
+          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:48px;">
+            <div class="value-card">
+              <h4>Cortisol Reduction</h4>
+              <p>Studies show a single 60-minute session reduces cortisol levels by up to 22%, providing immediate, measurable stress relief that lasts up to five days post-float.</p>
+            </div>
+            <div class="value-card">
+              <h4>Theta Brainwave States</h4>
+              <p>Floaters regularly achieve theta brainwave activity — the state between waking and sleep associated with peak creativity, deep insight, and accelerated learning.</p>
+            </div>
+            <div class="value-card">
+              <h4>Pain &amp; Inflammation</h4>
+              <p>The anti-gravity environment decompresses the spine and joints. Clinical trials show significant reduction in fibromyalgia, arthritis, and chronic back pain symptoms.</p>
+            </div>
+            <div class="value-card">
+              <h4>Athletic Recovery</h4>
+              <p>Magnesium absorbed through the skin during floating accelerates muscle recovery. Top athletes use float sessions to cut recovery time by up to 50%.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- PREPARATION GUIDE -->
+      <section class="section">
+        <div class="section-inner">
+          <div class="how-grid">
+            <div class="how-content">
+              <div class="section-label">Before You Arrive</div>
+              <h2 class="section-title">Perfect your <em>preparation</em></h2>
+              <p class="section-sub" style="margin-bottom:32px;">A little preparation makes a great float extraordinary.</p>
+              <div class="how-steps">
+                <div class="step">
+                  <div class="step-num">1</div>
+                  <div class="step-content">
+                    <h4>Avoid caffeine for 4 hours</h4>
+                    <p>Caffeine can make it harder to settle into deep relaxation. Herbal tea is ideal in the hours before your session.</p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">2</div>
+                  <div class="step-content">
+                    <h4>Don't shave or wax</h4>
+                    <p>Avoid shaving 4–6 hours before your float. Fresh cuts can sting in the high-salt water — even microscopic ones.</p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">3</div>
+                  <div class="step-content">
+                    <h4>Eat a light meal</h4>
+                    <p>Float on a comfortable, not-too-full stomach. A light meal 60–90 minutes before is ideal so digestion doesn't distract you.</p>
+                  </div>
+                </div>
+                <div class="step">
+                  <div class="step-num">4</div>
+                  <div class="step-content">
+                    <h4>Arrive 15 minutes early</h4>
+                    <p>This lets you check in, shower, and settle without rushing. Your relaxation begins the moment you walk through our doors.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FAQ -->
+      <section class="section services-bg">
+        <div class="section-inner">
+          <div class="section-header center">
+            <div class="section-label">FAQs</div>
+            <h2 class="section-title">Your questions, <em>answered</em></h2>
+          </div>
+          <div class="faq-list">
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                Is float therapy safe for everyone?
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="faq-answer"><p>Float therapy is safe for most people. However, we do not recommend it if you have open wounds, severe skin conditions, epilepsy, or are in the first trimester of pregnancy. Please consult your doctor if you have concerns.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                Do I need to bring anything?
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="faq-answer"><p>Everything is provided — towels, earplugs, robes, and premium shower products. Just bring yourself. Swimsuits are optional; most guests float without clothing for maximum comfort.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                What if I'm claustrophobic?
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="faq-answer"><p>Our pods are spacious — about the size of a small car interior — and the lid is always under your control. You can float with the pod partially open or with soft ambient light on. Many guests with claustrophobia find they adapt within the first few minutes.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                How is the water kept clean?
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="faq-answer"><p>All 200 gallons of float water is filtered through a multi-stage system between every session using UV sterilisation and H2O2. The high salt concentration (25% Epsom salt) also creates an inhospitable environment for bacteria and pathogens.</p></div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" onclick="toggleFaq(this)">
+                How many sessions does it take to feel the benefits?
+                <svg viewBox="0 0 24 24" fill="none" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+              </button>
+              <div class="faq-answer"><p>Many guests feel notable benefits after their very first session. However, like meditation, flotation deepens with practice. Most guests report transformative results after their third session, which is why we offer our introductory 3-session package.</p></div>
             </div>
           </div>
         </div>

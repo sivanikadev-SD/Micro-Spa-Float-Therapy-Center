@@ -8,7 +8,17 @@
 <link rel="stylesheet" href="../assets/css/style.css">
 <link rel="stylesheet" href="../assets/css/dark-mode.css">
 <link rel="stylesheet" href="../assets/css/rtl.css">
-</head>
+    <link rel="icon" href="../assets/images/logo.png" type="image/png" />
+    <script>
+      (function() {
+        const theme = localStorage.getItem('theme') || 'light';
+        const dir = localStorage.getItem('dir') || 'ltr';
+        document.documentElement.setAttribute('data-theme', theme);
+        document.documentElement.setAttribute('data-dir', dir);
+        document.documentElement.setAttribute('dir', dir);
+      })();
+    </script>
+  </head>
 <body>
 <div id="dashboard" class="page active">
   <!-- SIDEBAR -->
@@ -78,10 +88,12 @@
   <!-- MAIN CONTENT -->
   <main class="dash-main">
     <div class="dash-topbar">
-      <div class="dash-topbar-title" id="dashTitle">Client Dashboard</div>
       <div class="dash-topbar-right">
-        <button class="icon-btn" onclick="toggleTheme()">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        <button class="icon-btn" onclick="toggleTheme()" title="Toggle theme" id="themeBtn">
+          <svg id="themeIcon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M21 12.79A9 9 0 1111.21 3 7 7 0 0021 12.79z"/></svg>
+        </button>
+        <button class="icon-btn" onclick="toggleRTL()" title="Toggle RTL" id="rtlBtn">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" width="16" height="16"><path d="M3 5h12M9 5v14M3 9l3-3-3-3M15 5h6M15 19h6M15 12h6"/></svg>
         </button>
         <button class="notif-btn" onclick="showPanel('notifications')">
           <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 006 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 01-3.46 0"/></svg>
@@ -97,12 +109,12 @@
 
       <!-- OVERVIEW PANEL -->
       <div class="dash-panel active" id="panel-overview">
-        <div class="welcome-banner">
+        <div class="welcome-banner" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../assets/images/home_v2_benefits.png') center/cover; color: white;">
           <div>
-            <h2>Welcome back, Aria 🌊</h2>
-            <p>You have 2 sessions remaining this month. Your wellness score is trending up.</p>
+            <h2 style="color: white; margin-bottom: 8px;">Welcome back, Aria 🌊</h2>
+            <p style="color: rgba(255,255,255,0.9);">You have 2 sessions remaining this month. Your wellness score is trending up.</p>
           </div>
-          <button class="btn btn-white" onclick="showPanel('booking')">Book Next Float</button>
+          <button class="btn btn-white" onclick="showPanel('booking')" style="background: white; color: var(--primary); border: none; padding: 12px 24px;">Book Next Float</button>
         </div>
         <div class="metrics-grid">
           <div class="metric-card">
@@ -460,9 +472,9 @@
               <canvas id="sigCanvas"></canvas>
             </div>
             <p class="signature-hint">Sign above using your mouse or touchscreen</p>
-            <div style="display:flex;gap:12px">
-              <button class="btn btn-primary">Submit & Sign Waiver</button>
-              <button class="btn btn-secondary">Clear Signature</button>
+            <div class="btn-group-responsive" style="margin-bottom:24px">
+              <button class="btn btn-primary" onclick="showToast('Waiver submitted successfully!')">Submit & Sign Waiver</button>
+              <button class="btn btn-secondary" onclick="showToast('Signature cleared.')">Clear Signature</button>
             </div>
           </div>
         </div>
@@ -471,7 +483,7 @@
       <!-- PROFILE PANEL -->
       <div class="dash-panel" id="panel-profile">
         <h3 style="font-family:var(--font-display);font-size:28px;font-weight:300;margin-bottom:28px">Profile & Preferences</h3>
-        <div style="display:grid;grid-template-columns:1fr 1fr;gap:24px">
+        <div class="form-col-stack">
           <div class="dash-card">
             <div class="dash-card-header"><h4>Personal Information</h4></div>
             <div class="dash-card-body">
@@ -583,7 +595,6 @@ function showPanel(id) {
     waiver: 'Digital Waivers', profile: 'Profile & Preferences',
     notifications: 'Notifications'
   };
-  document.getElementById('dashTitle').textContent = titles[id] || 'Dashboard';
   event.currentTarget && event.currentTarget.classList.add('active');
   // Try activating button that called this
   document.querySelectorAll('.dash-nav-link').forEach(btn => {

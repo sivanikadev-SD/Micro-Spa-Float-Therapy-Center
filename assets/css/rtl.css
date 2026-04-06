@@ -1,1 +1,136 @@
-/* RTL Styles */
+/* RTL Styles — Comprehensive Overrides */
+
+[dir="rtl"] {
+  text-align: right;
+}
+
+/* =========================================
+   DASHBOARD RTL
+   ========================================= */
+[dir="rtl"] #dashboard {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .dash-sidebar {
+  border-right: none;
+  border-left: 1px solid var(--border);
+}
+
+[dir="rtl"] .dash-topbar-right {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+[dir="rtl"] .dash-mobile-toggle {
+  margin-right: 0;
+  margin-left: 16px;
+}
+
+[dir="rtl"] .dash-nav-link {
+  text-align: right;
+}
+
+[dir="rtl"] .dash-nav-link svg {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+[dir="rtl"] .metric-card .metric-change svg {
+  margin-right: 0;
+  margin-left: 4px;
+}
+
+[dir="rtl"] .dash-card-header {
+  flex-direction: row-reverse;
+}
+
+[dir="rtl"] .dash-user-avatar {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+/* =========================================
+   MAIN NAVIGATION RTL
+   ========================================= */
+[dir="rtl"] .nav-actions {
+  margin-right: 0;
+  margin-left: 15px;
+}
+
+[dir="rtl"] .nav-links {
+  margin-left: 0;
+  margin-right: auto;
+}
+
+@media (max-width: 900px) {
+  [dir="rtl"] .logo {
+    margin-right: 0;
+    margin-left: auto; /* Push icons/hamburger to the left */
+  }
+  [dir="rtl"] .nav-actions {
+    margin-right: 0;
+    margin-left: 15px;
+  }
+  [dir="rtl"] .nav-links {
+    transform: translateX(100%); /* Drawer slides from the right in RTL? Or left? Usually right */
+    right: 0;
+    left: auto;
+  }
+  [dir="rtl"] .nav-links.mobile-open {
+    transform: translateX(0);
+  }
+  [dir="rtl"] .mobile-toggle {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+/* =========================================
+   HERO & GLOBAL LAYOUT RTL
+   ========================================= */
+[dir="rtl"] .hero::before {
+  right: auto;
+  left: 0;
+  clip-path: polygon(0 0, 88% 0, 100% 100%, 0% 100%);
+}
+
+[dir="rtl"] .hero-inner {
+  direction: rtl;
+}
+
+[dir="rtl"] .hero-label::before {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+[dir="rtl"] .btn svg {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+[dir="rtl"] .section-label::before {
+  margin-right: 0;
+  margin-left: 10px;
+}
+
+[dir="rtl"] .step-num {
+  margin-right: 0;
+  margin-left: 20px;
+}
+
+[dir="rtl"] .footer-grid {
+  text-align: right;
+}
+
+[dir="rtl"] .footer-bottom {
+  flex-direction: row-reverse;
+}
+
+/* Forms Alignment */
+[dir="rtl"] .form-group label {
+  text-align: right;
+}
+
+[dir="rtl"] .form-control {
+  text-align: right;
+}
