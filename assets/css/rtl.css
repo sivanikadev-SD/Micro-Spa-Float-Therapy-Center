@@ -53,13 +53,11 @@
    MAIN NAVIGATION RTL
    ========================================= */
 [dir="rtl"] .nav-actions {
-  margin-right: 0;
-  margin-left: 15px;
+  margin-left: 0;
 }
 
 [dir="rtl"] .nav-links {
-  margin-left: 0;
-  margin-right: auto;
+  margin-right: 0;
 }
 
 @media (max-width: 900px) {

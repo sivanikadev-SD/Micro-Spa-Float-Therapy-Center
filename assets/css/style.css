@@ -7,12 +7,12 @@
   --secondary: #6e8fa3;
   --secondary-light: #b8ccd6;
   --accent-glow: #5fa8d3;
-  --bg: #dceff5;
-  --bg-alt: #b8ccd6;
+  --bg: #ffffff;
+  --bg-alt: #f4f7f9;
   --surface: rgba(255, 255, 255, 0.788);
   --text: #1f3a4a;
-  --text-muted: #4a6b7c;
-  --text-light: #6e8fa3;
+  --text-muted: #3d5a6a;
+  --text-light: #5b7c8d;
   --border: rgba(255, 255, 255, 0.4);
   --success: #9caf9c;
   --warning: #c7c9c7;
@@ -103,7 +103,7 @@ button {
 .nav-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 32px;
+  padding: 0 24px;
   width: 100%;
   display: flex;
   align-items: center;
@@ -118,7 +118,7 @@ button {
   letter-spacing: 0.02em;
   color: var(--primary);
   white-space: nowrap;
-  flex: 0 0 auto;
+  flex: 1;
 }
 .logo-icon {
   width: 60px;
@@ -138,8 +138,7 @@ button {
   align-items: center;
   gap: 8px;
   flex: 1;
-  justify-content: flex-start;
-  margin-left: 32px;
+  justify-content: center;
 }
 .nav-links a {
   font-size: 14px;
@@ -160,8 +159,8 @@ button {
   display: flex;
   align-items: center;
   gap: 10px;
-  flex: 0 0 auto;
-  margin-left: auto;
+  flex: 1;
+  justify-content: flex-end;
 }
 .icon-btn {
   width: 38px;
@@ -245,7 +244,7 @@ button {
   min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: calc(var(--nav-h) + 60px) 32px 80px;
+  padding: calc(var(--nav-h) + 60px) 24px 80px;
   background: var(--bg);
   position: relative;
   overflow: visible;
@@ -316,6 +315,7 @@ button {
   display: flex;
   gap: 12px;
   align-items: center;
+  flex-wrap: wrap;
 }
 .hero-visual {
   position: relative;
@@ -325,12 +325,13 @@ button {
 }
 .float-pod {
   width: 100%;
-  max-width: 480px;
+  max-width: 520px;
   aspect-ratio: 4/3;
-  border-radius: 24px;
+  border-radius: 32px;
   overflow: hidden;
   position: relative;
-  box-shadow: var(--shadow-lg);
+  box-shadow: 0 20px 50px rgba(31, 58, 74, 0.25);
+  border: 1px solid var(--border);
 }
 .float-pod-img {
   width: 100%;
@@ -393,7 +394,7 @@ button {
    SECTION COMMONS
    ========================================= */
 .section {
-  padding: 60px 32px;
+  padding: 80px 24px;
 }
 .section-inner {
   max-width: 1200px;
@@ -430,7 +431,7 @@ button {
 }
 .section-sub {
   font-size: 16px;
-  color: var(--secondary-light);
+  color: var(--text-muted);
   max-width: 500px;
   line-height: 1.8;
 }
@@ -806,7 +807,7 @@ button {
 .site-footer {
   background: var(--bg-alt);
   border-top: 1px solid var(--border);
-  padding: 64px 32px 32px;
+  padding: 80px 24px 40px;
 }
 .footer-inner {
   max-width: 1200px;
@@ -860,7 +861,7 @@ button {
    SERVICES PAGE
    ========================================= */
 .page-hero {
-  padding: calc(var(--nav-h) + 60px) 32px 60px;
+  padding: calc(var(--nav-h) + 80px) 24px 80px;
   background: var(--bg);
   text-align: center;
 }
@@ -872,6 +873,12 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 32px;
+}
+.science-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 48px;
 }
 .service-detail-card {
   background: var(--surface);
@@ -2175,6 +2182,7 @@ textarea.form-control {
   .pricing-grid,
   .footer-grid,
   .services-detail-grid,
+  .science-grid,
   .team-grid,
   .values-grid {
     grid-template-columns: 1fr;
@@ -3263,32 +3271,87 @@ textarea.form-control {
 
 /* Responsive for new sections */
 @media (max-width: 768px) {
-  .gallery-grid { grid-template-columns: 1fr 1fr; }
-  .article-grid { grid-template-columns: 1fr 1fr; }
-  .awards-strip { padding: 24px; gap: 20px; }
-  .testimonial-dark-banner { padding: 32px 24px; }
-  .timeline { padding-left: 28px; }
+  .hero-inner { grid-template-columns: 1fr; gap: 40px; text-align: center; }
+  .hero-desc { margin: 0 auto 36px; }
+  .hero-actions { justify-content: center; }
+  .float-pod { max-width: 100%; aspect-ratio: 4/3; min-height: 320px; }
+  .hero-stats { position: absolute; left: 50%; transform: translateX(-50%); bottom: 20px; width: 90%; }
+  
+  .services-grid { grid-template-columns: 1fr; }
+  .pricing-grid { grid-template-columns: 1fr; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  .footer-grid { grid-template-columns: 1fr; gap: 32px; }
 }
+
 @media (max-width: 480px) {
+  .nav-inner, .hero, .section, .site-footer, .page-hero { padding-left: 20px; padding-right: 20px; }
+  .hero h1 { font-size: 36px; }
+  .float-pod { aspect-ratio: 4/3; min-height: 280px; }
+  .hero-stats { gap: 8px; padding: 12px; bottom: 15px; }
+  .stat-val { font-size: 20px; }
+
+  /* Services page — card fixes */
+  .services-detail-grid { grid-template-columns: 1fr; gap: 20px; }
+  .service-detail-card { border-radius: 16px; }
+  .sdc-image { height: 200px; }
+  .sdc-body { padding: 20px 16px; }
+  .sdc-body h3 { font-size: 20px; }
+  .sdc-body p { font-size: 13px; }
+  .sdc-meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .sdc-meta span { font-size: 12px; }
+  .benefits-list li { font-size: 12px; }
+
+  /* Page hero padding tightened */
+  .page-hero { padding-top: calc(var(--nav-h) + 40px); padding-bottom: 40px; padding-left: 20px; padding-right: 20px; }
+  .page-hero-inner { max-width: 100%; }
+  .section-title { font-size: clamp(22px, 6vw, 32px); }
+  .section-sub { font-size: 14px; }
+
+  /* Services science grid */
+  .science-grid { grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
+  .value-card { padding: 20px 16px; border-radius: 12px; }
+  .value-card h4 { font-size: 16px; margin-bottom: 8px; }
+  .value-card p { font-size: 13px; line-height: 1.6; }
+
   .gallery-grid { grid-template-columns: 1fr; }
   .article-grid { grid-template-columns: 1fr; }
-  .how-steps {
-    grid-template-columns: 1fr;
-  }
-  .how-steps h3 {
-    font-size: 20px;
-    width: 100%;
-    margin: 0 auto;
-    margin-bottom: 10px;
-  }
-  .how-steps p {
-    font-size: 13px;
-    width: 100%;
-  }
-  .how-image {
-    display: none;
-  }
+  .how-steps { grid-template-columns: 1fr; }
+  .how-steps h3 { font-size: 20px; width: 100%; margin: 0 auto 10px; }
+  .how-steps p { font-size: 13px; width: 100%; }
+  .how-image { display: none; }
+}
 
+/* ---- 360 px: tightest breakpoint ---- */
+@media (max-width: 390px) {
+  .nav-inner, .hero, .section, .site-footer, .page-hero { padding-left: 16px; padding-right: 16px; }
+
+  /* Services page at 360px */
+  .sdc-body { padding: 16px 12px; }
+  .sdc-body h3 { font-size: 18px; margin-bottom: 8px; }
+  .sdc-meta { gap: 8px; }
+  .sdc-meta span { font-size: 11px; }
+  .benefits-list { gap: 6px; }
+  .benefits-list li { font-size: 11px; }
+  .service-detail-card .btn { width: 100%; justify-content: center; padding: 12px 16px; font-size: 13px; }
+
+  /* Science grid at 360px */
+  .science-grid { gap: 12px; margin-top: 24px; }
+  .value-card { padding: 16px 12px; }
+  .value-card h4 { font-size: 15px; }
+  .value-card p { font-size: 12px; }
+
+  /* Hero section at 360px */
+  .page-hero { padding-top: calc(var(--nav-h) + 32px); padding-bottom: 32px; }
+  .section-title { font-size: 22px; }
+  .section-sub { font-size: 13px; }
+
+  /* General section spacing */
+  .section { padding-top: 48px; padding-bottom: 48px; }
+  .section-inner { max-width: 100%; }
 }
 
 

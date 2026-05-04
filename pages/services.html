@@ -45,9 +45,6 @@
           <a onclick="showPage('contact')" data-page="contact">Contact</a>
           <a onclick="showPage('dashboard')" data-page="dashboard">Dashboard</a>
           <div class="mobile-nav-btns">
-            <button onclick="showPage('auth-login')" class="btn btn-secondary">
-              Sign In
-            </button>
             <button onclick="showPage('auth-signup')" class="btn btn-primary">
               Book Now
             </button>
@@ -61,7 +58,7 @@
             </button>
             <button class="icon-btn" onclick="toggleRTL()" title="Toggle RTL">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                <path d="M3 5h12M9 5v14M3 9l3-3-3-3M15 5h6M15 19h6M15 12h6" />
+                <path d="M4 6h16M4 12h16M4 18h10" />
               </svg>
             </button>
           </div>
@@ -95,12 +92,9 @@
               stroke="currentColor"
               stroke-width="1.5"
             >
-              <path d="M3 5h12M9 5v14M3 9l3-3-3-3M15 5h6M15 19h6M15 12h6" />
+              <path d="M4 6h16M4 12h16M4 18h10" />
             </svg>
           </button>
-          <a onclick="showPage('auth-login')" class="btn btn-secondary"
-            >Sign In</a
-          >
           <a onclick="showPage('auth-signup')" class="btn btn-primary"
             >Book Now</a
           >
@@ -108,15 +102,15 @@
       </nav>
     </header>
     <div id="services" class="page active">
-      <div class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('../assets/images/float_therapy.png') center/cover; padding: 140px 32px 80px; color: white;">
+      <div class="page-hero" style="background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('../assets/images/float_therapy.png') center/cover; padding: 140px 24px 80px; color: white;">
         <div class="page-hero-inner">
-          <div class="section-label" style="justify-content: center">
+          <div class="section-label" style="justify-content: center; color: white; opacity: 0.9;">
             Our Offerings
           </div>
-          <h1 class="section-title">
+          <h1 class="section-title" style="color: white;">
             Therapies for every <em>dimension</em> of wellness
           </h1>
-          <p class="section-sub" style="margin: 0 auto">
+          <p class="section-sub" style="margin: 0 auto; color: white; opacity: 0.85;">
             From deep float sessions to revitalizing saunas, every service is
             designed for profound restoration.
           </p>
@@ -277,7 +271,7 @@
             <h2 class="section-title">Clinically proven <em>results</em></h2>
             <p class="section-sub">Float therapy is backed by decades of research across neuroscience, sports medicine, and psychiatry.</p>
           </div>
-          <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:28px;margin-top:48px;">
+          <div class="science-grid">
             <div class="value-card">
               <h4>Cortisol Reduction</h4>
               <p>Studies show a single 60-minute session reduces cortisol levels by up to 22%, providing immediate, measurable stress relief that lasts up to five days post-float.</p>
