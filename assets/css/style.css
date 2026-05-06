@@ -3489,8 +3489,8 @@ textarea.form-control {
 
 @media (max-width: 480px) {
   .nav-inner, .hero, .section, .site-footer, .page-hero { padding-left: 20px; padding-right: 20px; }
-  .hero h1 { font-size: 36px; }
-  .float-pod { aspect-ratio: 4/3; min-height: 280px; }
+  .hero h1 { font-size: clamp(28px, 8vw, 36px); }
+  .float-pod { aspect-ratio: 4/3; width: 100%; min-height: auto; }
   .hero-stats { gap: 8px; padding: 12px; bottom: 15px; }
   .stat-val { font-size: 20px; }
 
@@ -3552,7 +3552,7 @@ textarea.form-control {
   .logo-icon { width: 40px; height: 40px; }
   .nav-actions { gap: 6px; margin-right: 8px; }
   .icon-btn { width: 34px; height: 34px; }
-  .hero, .section, .site-footer, .page-hero { padding-left: 24px; padding-right: 24px; }
+  .hero, .section, .site-footer, .page-hero { padding-left: 16px; padding-right: 16px; }
 
   /* Services page at 360px */
   .sdc-body { padding: 16px 12px; }
@@ -3571,15 +3571,17 @@ textarea.form-control {
 
   /* Hero section */
   .hero { min-height: auto; padding-top: calc(var(--nav-h) + 40px); padding-bottom: 60px; }
-  .hero h1 { font-size: 26px; line-height: 1.2; }
-  .hero-inner { gap: 32px; }
-  .hero-label { font-size: 10px; margin-bottom: 8px; }
+  .hero h1 { font-size: 24px; line-height: 1.2; }
+  .hero-inner { gap: 24px; }
+  .hero-label { font-size: 9px; margin-bottom: 8px; }
   .hero-label::before { display: none; }
   .hero::before { display: none; }
-  .hero-actions { flex-direction: column; width: 100%; gap: 12px; margin-top: 32px; }
-  .hero-actions .btn { width: 100%; justify-content: center; }
-  .hero-stats { gap: 6px; padding: 12px; bottom: 10px; width: calc(100% - 32px); left: 16px; transform: none; }
-  .hero-desc { font-size: 14px; line-height: 1.6; margin: 0 auto; }
+  .hero-actions { flex-direction: column; width: 100%; gap: 10px; margin-top: 24px; }
+  .hero-actions .btn { width: 100%; justify-content: center; padding: 12px 24px; }
+  .hero-stats { gap: 6px; padding: 10px; bottom: 10px; width: calc(100% - 32px); left: 16px; transform: none; }
+  .stat-val { font-size: 18px; }
+  .stat-label { font-size: 9px; }
+  .hero-desc { font-size: 13px; line-height: 1.6; margin: 0 auto; }
   .page-hero { padding-top: calc(var(--nav-h) + 40px); padding-bottom: 40px; }
   .section-title { font-size: 22px; }
   .section-sub { font-size: 13px; }
